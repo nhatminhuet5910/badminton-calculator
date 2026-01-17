@@ -7,7 +7,7 @@
     <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
     
     <style>
-        /* CSS Giao diện đẹp, chuẩn Mobile */
+        /* CSS Giao diện (Giữ nguyên) */
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
             background: url('background.jpg') no-repeat center center fixed;
@@ -117,7 +117,7 @@
         <label>Tiền Cầu (Nam phá, Nữ chịu)</label>
         <input type="number" id="tienCau" placeholder="Nhập số tiền cầu..." >
         <div style="font-size: 0.7rem; color: #636e72; font-style: italic; margin-top: 5px;">
-            *Logic: Tiền cầu Nam đóng gấp đôi Nữ (Hệ số 2:1)
+            *Logic: Nữ đánh ít tốn cầu -> Nữ chịu 1 phần, Nam chịu 2 phần.
         </div>
     </div>
 
@@ -179,30 +179,34 @@
         }
 
         // --- BƯỚC 1: TÍNH CÁC CHI PHÍ CHIA ĐỀU (Sân, Nước, Khác) ---
+        // Phần này chia đều sòng phẳng đầu người
         let tongPhiChung = san + nuoc + khac;
         let phiChungMoiNguoi = tongPhiChung / tongNguoi;
 
-        // --- BƯỚC 2: TÍNH TIỀN CẦU (Logic 2/3 và 1/3) ---
-        // Áp dụng quy tắc: Nam dùng 2 phần, Nữ dùng 1 phần.
-        // Tổng số phần cần chia = (Số Nam * 2) + (Số Nữ * 1)
+        // --- BƯỚC 2: TÍNH TIỀN CẦU (HỆ SỐ) ---
+        // Logic: Nữ dùng ít cầu hơn Nam.
+        // Quy ước: Nữ là Hệ số 1. Nam là Hệ số 2.
+        // Tức là: Tiền cầu của 1 ông Nam luôn gấp đôi tiền cầu của 1 bà Nữ.
         
-        let phanTienCauNu = 0;
-        let phanTienCauNam = 0;
+        let tienCauNam = 0;
+        let tienCauNu = 0;
 
         if (cau > 0) {
-            let tongHeSo = (nam * 2) + (nu * 1);
+            // Tổng số "suất cầu" của cả nhóm
+            // Ví dụ: 7 Nam, 2 Nữ => (7x2) + (2x1) = 16 suất cầu
+            let tongSuatCau = (nam * 2) + (nu * 1);
             
-            if (tongHeSo > 0) {
-                let giaMotPhan = cau / tongHeSo; // Đây là giá tiền cầu 1 bạn Nữ phải đóng
+            if (tongSuatCau > 0) {
+                let giaMotSuat = cau / tongSuatCau; // Giá tiền 1 suất (chính là giá Nữ phải trả)
                 
-                phanTienCauNu = giaMotPhan * 1;
-                phanTienCauNam = giaMotPhan * 2; // Nam đóng gấp đôi Nữ
+                tienCauNu = giaMotSuat * 1; 
+                tienCauNam = giaMotSuat * 2; // Nam trả 2 suất -> Gấp đôi Nữ
             }
         }
 
         // --- BƯỚC 3: CỘNG TỔNG LẠI ---
-        let chotGiaNam = phiChungMoiNguoi + phanTienCauNam;
-        let chotGiaNu = phiChungMoiNguoi + phanTienCauNu;
+        let chotGiaNam = phiChungMoiNguoi + tienCauNam;
+        let chotGiaNu = phiChungMoiNguoi + tienCauNu;
         let tongTien = san + nuoc + khac + cau;
         
         // Hiển thị
@@ -217,7 +221,7 @@
         ketQua.scrollIntoView({ behavior: 'smooth' });
     }
 
-    // Logic Chụp Ảnh (Giữ nguyên)
+    // Logic Chụp Ảnh
     function chupAnhManHinh() {
         let modal = document.getElementById('photoModal');
         let loading = document.getElementById('loadingText');
