@@ -2,238 +2,208 @@
 <html lang="vi">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tính Tiền Cầu Lông</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Máy Chém Cầu Lông Vô Địch</title>
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
     
     <style>
+        /* Font hệ thống chuẩn chỉ */
         body {
-            font-family: 'Montserrat', sans-serif;
-            /* QUAN TRỌNG: Code này sẽ lấy file ảnh tên là background.jpg nằm cùng thư mục */
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
             background: url('background.jpg') no-repeat center center fixed;
             background-size: cover;
-            
             display: flex;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
             margin: 0;
             color: #333;
+            padding: 15px;
+            box-sizing: border-box;
         }
 
-        /* Lớp phủ màu tối để chữ dễ đọc hơn trên nền ảnh */
         .overlay {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0, 0, 0, 0.6); /* Độ tối 60% */
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(135deg, rgba(20, 0, 50, 0.8), rgba(0, 0, 0, 0.6));
             z-index: -1;
         }
 
         .container {
-            background: rgba(255, 255, 255, 0.95);
-            padding: 30px;
+            background: rgba(255, 255, 255, 0.96);
+            padding: 25px;
             border-radius: 20px;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.4);
-            width: 90%;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.6);
+            width: 100%;
             max-width: 450px;
             backdrop-filter: blur(8px);
-            animation: slideIn 0.6s ease-out;
-        }
-
-        @keyframes slideIn {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
+            border: 2px solid rgba(255, 255, 255, 0.4);
         }
 
         h2 {
             text-align: center;
-            color: #2c3e50;
             margin-top: 0;
-            margin-bottom: 20px;
+            font-weight: 800;
+            background: -webkit-linear-gradient(#e17055, #d63031);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-size: 1.6rem;
+            margin-bottom: 5px;
             text-transform: uppercase;
-            letter-spacing: 1px;
-            border-bottom: 2px solid #eee;
-            padding-bottom: 15px;
+        }
+
+        .subtitle {
+            text-align: center; font-size: 0.85rem; color: #636e72; margin-bottom: 20px; font-style: italic;
         }
 
         .section-title {
-            font-size: 0.9rem;
-            color: #555;
-            margin-top: 20px;
-            margin-bottom: 10px;
-            font-weight: 700;
-            display: flex;
-            align-items: center;
-            gap: 8px;
+            font-size: 0.75rem; color: #b2bec3; background: #2d3436;
+            padding: 4px 8px; border-radius: 4px; display: inline-block;
+            margin-top: 12px; margin-bottom: 8px; font-weight: 700; text-transform: uppercase;
         }
 
-        .input-row {
-            display: flex;
-            gap: 15px;
-            margin-bottom: 15px;
-        }
-
-        .input-group {
-            flex: 1;
-        }
+        .input-row { display: flex; gap: 12px; margin-bottom: 12px; }
+        .input-group { flex: 1; }
 
         label {
-            display: block;
-            margin-bottom: 5px;
-            font-size: 0.9rem;
-            font-weight: 600;
-            color: #444;
+            display: block; margin-bottom: 6px; font-size: 0.9rem; font-weight: 600; color: #2d3436;
         }
 
         input {
-            width: 100%;
-            padding: 12px;
-            border: 2px solid #eee;
-            border-radius: 10px;
-            box-sizing: border-box;
-            font-size: 16px;
-            font-family: 'Montserrat', sans-serif;
-            transition: all 0.3s ease;
-            background-color: #f9f9f9;
+            width: 100%; padding: 12px; border: 2px solid #dfe6e9;
+            border-radius: 10px; box-sizing: border-box; font-size: 16px;
+            transition: 0.3s; background: #fdfdfd; font-weight: 500;
         }
-
-        /* HIỆU ỨNG TRỎ CHUỘT (INPUT) */
-        input:hover {
-            border-color: #bdc3c7;
-            background-color: #fff;
-        }
-
         input:focus {
-            outline: none;
-            border-color: #16a085;
-            box-shadow: 0 4px 15px rgba(22, 160, 133, 0.15);
-            transform: scale(1.02);
+            outline: none; border-color: #00cec9; background: #fff;
+            box-shadow: 0 4px 10px rgba(0, 206, 201, 0.15);
         }
+
+        #tienCau { border-color: #ff7675; color: #d63031; font-weight: 700; }
+        #tienCau:focus { border-color: #d63031; }
+
+        .button-area { display: flex; gap: 10px; margin-top: 20px; }
 
         button {
-            width: 100%;
-            padding: 16px;
-            background: linear-gradient(135deg, #11998e, #38ef7d);
-            color: white;
-            border: none;
-            border-radius: 12px;
-            font-size: 18px;
-            font-weight: 700;
-            cursor: pointer;
-            margin-top: 25px;
-            transition: all 0.3s;
-            box-shadow: 0 5px 15px rgba(46, 204, 113, 0.3);
-            text-transform: uppercase;
+            padding: 14px; border: none; border-radius: 12px;
+            font-size: 16px; font-weight: 700; cursor: pointer;
+            transition: all 0.2s; text-transform: uppercase; flex: 1;
         }
 
-        /* HIỆU ỨNG TRỎ CHUỘT (BUTTON) */
-        button:hover {
-            transform: translateY(-4px) scale(1.03);
-            box-shadow: 0 10px 25px rgba(46, 204, 113, 0.5);
-            background: linear-gradient(135deg, #16a085, #2ecc71);
+        .btn-calc {
+            background: linear-gradient(135deg, #0984e3, #6c5ce7); color: white;
+            box-shadow: 0 6px 15px rgba(9, 132, 227, 0.3);
+        }
+        .btn-camera {
+            background: linear-gradient(135deg, #00b894, #00cec9); color: white;
+            box-shadow: 0 6px 15px rgba(0, 184, 148, 0.3);
+            display: none; flex: 0.8;
         }
 
-        button:active {
-            transform: translateY(2px);
-        }
+        button:active { transform: translateY(2px); }
 
         .result {
-            margin-top: 25px;
-            padding: 20px;
-            background-color: #fff;
-            border-radius: 15px;
-            border: 2px dashed #16a085;
+            margin-top: 20px; padding: 20px; background: #fff;
+            border-radius: 15px; border: 2px dashed #6c5ce7;
             display: none;
         }
 
         .result-item {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 12px;
-            align-items: center;
-            font-size: 1.1rem;
+            display: flex; justify-content: space-between;
+            margin-bottom: 10px; font-size: 1rem; color: #2d3436; align-items: center;
         }
 
-        .divider {
-            height: 1px;
-            background-color: #eee;
-            margin: 15px 0;
-        }
+        .divider { height: 1px; background: #dfe6e9; margin: 12px 0; }
+        .final-price { font-size: 1.3rem; font-weight: 800; }
+        .male-price { color: #0984e3; } .female-price { color: #e84393; }
+        .note { font-size: 0.7rem; text-align: center; color: #b2bec3; margin-top: 8px; font-style: italic; }
 
-        .final-price {
-            font-size: 1.5rem;
-            font-weight: 800;
+        /* Responsive Mobile */
+        @media (max-width: 480px) {
+            .container { padding: 20px; }
+            h2 { font-size: 1.4rem; }
+            .input-row { flex-direction: column; gap: 10px; }
+            input { padding: 14px; }
+            .button-area { flex-direction: column; }
+            button { width: 100%; padding: 16px; font-size: 18px; }
+            .btn-camera { order: -1; margin-bottom: 10px; }
         }
-        
-        .male-price { color: #2980b9; }
-        .female-price { color: #e84393; }
     </style>
 </head>
 <body>
 
 <div class="overlay"></div>
 
-<div class="container">
-    <h2>🏸 Tính Tiền Cầu Lông</h2>
+<div class="container" id="captureArea">
+    <h2>💸 MÁY CHÉM CẦU LÔNG</h2>
+    <div class="subtitle">Đánh thì vui, tính tiền thì trầm cảm</div>
     
-    <div class="section-title">⚡ Chi Phí Chung (Chia Đều)</div>
+    <div class="section-title">💀 Chi Phí Mặt Bằng (Chia Đều)</div>
     <div class="input-row">
         <div class="input-group">
-            <label>Tiền Sân</label>
-            <input type="number" id="tienSan" placeholder="0">
+            <label>Cống nạp chủ sân</label>
+            <input type="number" id="tienSan" placeholder="Ví dụ: 200000">
         </div>
         <div class="input-group">
-            <label>Nước / Đá</label>
-            <input type="number" id="tienNuoc" placeholder="0">
+            <label>Nước thánh</label>
+            <input type="number" id="tienNuoc" placeholder="Ví dụ: 30000">
         </div>
     </div>
     <div class="input-group">
-        <label>Chi phí khác</label>
-        <input type="number" id="chiPhiKhac" placeholder="0">
+        <label>Ăn chơi nhảy múa khác</label>
+        <input type="number" id="chiPhiKhac" placeholder="Gửi xe, trà đá...">
     </div>
 
-    <div class="section-title" style="color: #d35400;">🏸 Tiền Cầu (Nam 2/3 - Nữ 1/3)</div>
+    <div class="section-title" style="background: #d63031; color: white;">🔥 Thiệt Hại Lông Lá</div>
     <div class="input-group">
-        <label>Tổng Tiền Cầu</label>
-        <input type="number" id="tienCau" placeholder="0" style="border-color: #fab1a0;">
+        <label>Tiền Cầu (Nam phá, Nữ chịu)</label>
+        <input type="number" id="tienCau" placeholder="Nhập số tiền cầu..." >
+        <div style="font-size: 0.75rem; color: #636e72; font-style: italic; margin-top: 5px;">
+            *Lí do: Nam tay to đập tốn cầu (chịu 2/3), Nữ điều cầu nhẹ nhàng (chịu 1/3)
+        </div>
     </div>
 
-    <div class="section-title">👥 Số Lượng Người</div>
+    <div class="section-title">👽 Điểm Danh</div>
     <div class="input-row">
         <div class="input-group">
-            <label>Số Nam (♂)</label>
+            <label>Nam thần (♂)</label>
             <input type="number" id="soNam" placeholder="0">
         </div>
         <div class="input-group">
-            <label>Số Nữ (♀)</label>
+            <label>Nữ thần (♀)</label>
             <input type="number" id="soNu" placeholder="0">
         </div>
     </div>
 
-    <button onclick="tinhTien()">Tính Toán Ngay</button>
+    <div class="button-area">
+        <button class="btn-calc" onclick="tinhTien()">⚡ Bấm Xem Ai Nghèo Hơn</button>
+        <button class="btn-camera" id="btnCamera" onclick="chupAnhManHinh()">📸 Chụp Ảnh Bảng Lương</button>
+    </div>
 
     <div class="result" id="khuVucKetQua">
         <div class="result-item">
-            <span style="color: #7f8c8d;">Tổng chi phí:</span>
-            <span id="hienThiTong" style="font-weight: bold;">0 đ</span>
+            <span>Tổng thiệt hại:</span>
+            <span id="hienThiTong" style="font-weight: bold; color: #d63031;">0 đ</span>
         </div>
         <div class="divider"></div>
         
         <div class="result-item">
-            <span>👦 Nam đóng:</span>
+            <span>👦 Anh em móc ví:</span>
             <span class="final-price male-price" id="giaNam">0 đ</span>
         </div>
         <div class="result-item">
-            <span>👧 Nữ đóng:</span>
+            <span>👧 Chị em đóng nhẹ:</span>
             <span class="final-price female-price" id="giaNu">0 đ</span>
         </div>
+        <div class="note">*Số liệu thực tế không làm tròn (chuẩn từng xu)</div>
     </div>
 </div>
 
 <script>
     function formatMoney(amount) {
-        amount = Math.ceil(amount / 1000) * 1000; // Làm tròn lên hàng nghìn
-        return amount.toLocaleString('vi-VN', { style: 'currency', currency: 'VND' });
+        return amount.toLocaleString('vi-VN', { 
+            style: 'currency', currency: 'VND',
+            minimumFractionDigits: 0, maximumFractionDigits: 2 
+        });
     }
 
     function tinhTien() {
@@ -241,13 +211,12 @@
         let nuoc = Number(document.getElementById('tienNuoc').value) || 0;
         let khac = Number(document.getElementById('chiPhiKhac').value) || 0;
         let cau = Number(document.getElementById('tienCau').value) || 0;
-        
         let nam = Number(document.getElementById('soNam').value) || 0;
         let nu = Number(document.getElementById('soNu').value) || 0;
         let tongNguoi = nam + nu;
 
         if (tongNguoi === 0) {
-            alert("Vui lòng nhập số người chơi!");
+            alert("Ủa alo? Không ai đi đánh cầu thì tính tiền cho ma à? 👻\nNhập số người đi bạn ơi!");
             return;
         }
 
@@ -257,20 +226,33 @@
         if (nam > 0 && nu > 0) {
             cauNam = (cau * (2/3)) / nam;
             cauNu = (cau * (1/3)) / nu;
-        } else if (nam > 0) {
-            cauNam = cau / nam;
-        } else if (nu > 0) {
-            cauNu = cau / nu;
-        }
+        } else if (nam > 0 && nu === 0) { cauNam = cau / nam; } 
+        else if (nu > 0 && nam === 0) { cauNu = cau / nu; }
 
         let tongTien = san + nuoc + khac + cau;
+        
         document.getElementById('hienThiTong').innerText = formatMoney(tongTien);
         document.getElementById('giaNam').innerText = formatMoney(phiChung + cauNam);
         document.getElementById('giaNu').innerText = formatMoney(phiChung + cauNu);
 
         let ketQua = document.getElementById('khuVucKetQua');
         ketQua.style.display = 'block';
+        document.getElementById('btnCamera').style.display = 'block';
         ketQua.scrollIntoView({ behavior: 'smooth' });
+    }
+
+    function chupAnhManHinh() {
+        document.querySelector('.button-area').style.display = 'none';
+        var captureElement = document.getElementById('captureArea');
+        html2canvas(captureElement, {
+            scale: 2, backgroundColor: null, useCORS: true
+        }).then(canvas => {
+            document.querySelector('.button-area').style.display = 'flex';
+            let link = document.createElement('a');
+            link.download = 'bang-luong-cau-long.png';
+            link.href = canvas.toDataURL("image/png");
+            link.click();
+        });
     }
 </script>
 
