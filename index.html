@@ -7,118 +7,75 @@
     <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
     
     <style>
-        /* Font hệ thống */
+        /* CSS Giao diện đẹp, chuẩn Mobile */
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
             background: url('background.jpg') no-repeat center center fixed;
             background-size: cover;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            margin: 0;
-            color: #333;
-            padding: 15px;
-            box-sizing: border-box;
+            display: flex; justify-content: center; align-items: center;
+            min-height: 100vh; margin: 0; color: #333; padding: 15px; box-sizing: border-box;
         }
-
         .overlay {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: linear-gradient(135deg, rgba(20, 0, 50, 0.8), rgba(0, 0, 0, 0.6));
-            z-index: 0;
+            background: linear-gradient(135deg, rgba(20, 0, 50, 0.8), rgba(0, 0, 0, 0.6)); z-index: 0;
         }
-
         .container {
-            position: relative;
-            z-index: 1;
-            background: rgba(255, 255, 255, 0.96);
-            padding: 25px;
-            border-radius: 20px;
-            box-shadow: 0 15px 40px rgba(0,0,0,0.6);
-            width: 100%;
-            max-width: 450px;
-            backdrop-filter: blur(8px);
-            border: 2px solid rgba(255, 255, 255, 0.4);
+            position: relative; z-index: 1; background: rgba(255, 255, 255, 0.96);
+            padding: 25px; border-radius: 20px; box-shadow: 0 15px 40px rgba(0,0,0,0.6);
+            width: 100%; max-width: 450px; backdrop-filter: blur(8px); border: 2px solid rgba(255, 255, 255, 0.4);
         }
-
         h2 {
             text-align: center; margin-top: 0; font-weight: 800;
             background: -webkit-linear-gradient(#e17055, #d63031);
             -webkit-background-clip: text; -webkit-text-fill-color: transparent;
             font-size: 1.6rem; margin-bottom: 5px; text-transform: uppercase;
         }
-
         .subtitle { text-align: center; font-size: 0.85rem; color: #636e72; margin-bottom: 20px; font-style: italic; }
-
         .section-title {
-            font-size: 0.75rem; color: #b2bec3; background: #2d3436;
-            padding: 4px 8px; border-radius: 4px; display: inline-block;
-            margin-top: 12px; margin-bottom: 8px; font-weight: 700; text-transform: uppercase;
+            font-size: 0.75rem; color: #b2bec3; background: #2d3436; padding: 4px 8px; border-radius: 4px;
+            display: inline-block; margin-top: 12px; margin-bottom: 8px; font-weight: 700; text-transform: uppercase;
         }
-
         .input-row { display: flex; gap: 12px; margin-bottom: 12px; }
         .input-group { flex: 1; }
-
         label { display: block; margin-bottom: 6px; font-size: 0.9rem; font-weight: 600; color: #2d3436; }
-
         input {
-            width: 100%; padding: 12px; border: 2px solid #dfe6e9;
-            border-radius: 10px; box-sizing: border-box; font-size: 16px;
+            width: 100%; padding: 12px; border: 2px solid #dfe6e9; border-radius: 10px; box-sizing: border-box; font-size: 16px;
             transition: 0.3s; background: #fdfdfd; font-weight: 500;
         }
         input:focus { outline: none; border-color: #00cec9; background: #fff; box-shadow: 0 4px 10px rgba(0, 206, 201, 0.15); }
-
         #tienCau { border-color: #ff7675; color: #d63031; font-weight: 700; }
-        #tienCau:focus { border-color: #d63031; }
-
+        
         .button-area { display: flex; gap: 10px; margin-top: 20px; }
-
         button {
-            padding: 14px; border: none; border-radius: 12px;
-            font-size: 16px; font-weight: 700; cursor: pointer;
+            padding: 14px; border: none; border-radius: 12px; font-size: 16px; font-weight: 700; cursor: pointer;
             transition: all 0.2s; text-transform: uppercase; flex: 1;
         }
-
         .btn-calc { background: linear-gradient(135deg, #0984e3, #6c5ce7); color: white; box-shadow: 0 6px 15px rgba(9, 132, 227, 0.3); }
-        .btn-camera { background: linear-gradient(135deg, #00b894, #00cec9); color: white; box-shadow: 0 6px 15px rgba(0, 184, 148, 0.3); display: none; flex: 0.8; }
+        .btn-camera { background: linear-gradient(135deg, #00b894, #00cec9); color: white; display: none; flex: 0.8; }
         button:active { transform: translateY(2px); }
-
+        
         .result {
-            margin-top: 20px; padding: 20px; background: #fff;
-            border-radius: 15px; border: 2px dashed #6c5ce7; display: none;
+            margin-top: 20px; padding: 20px; background: #fff; border-radius: 15px; border: 2px dashed #6c5ce7; display: none;
         }
-
         .result-item { display: flex; justify-content: space-between; margin-bottom: 10px; font-size: 1rem; color: #2d3436; align-items: center; }
         .divider { height: 1px; background: #dfe6e9; margin: 12px 0; }
         .final-price { font-size: 1.3rem; font-weight: 800; }
         .male-price { color: #0984e3; } .female-price { color: #e84393; }
         .note { font-size: 0.7rem; text-align: center; color: #b2bec3; margin-top: 8px; font-style: italic; }
-
-        /* --- MODAL XEM ẢNH --- */
+        
+        /* Modal Popup */
         .modal-overlay {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.85); z-index: 999;
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); z-index: 999;
             display: none; flex-direction: column; justify-content: center; align-items: center;
         }
-        .modal-content {
-            background: transparent; padding: 10px; max-width: 90%; max-height: 80%;
-            text-align: center;
-        }
-        .modal-content img {
-            max-width: 100%; max-height: 70vh; border-radius: 10px; border: 2px solid white;
-            box-shadow: 0 0 20px rgba(255,255,255,0.2);
-        }
-        .modal-btn-close {
-            margin-top: 15px; padding: 10px 25px; background: #ff7675; color: white;
-            border: none; border-radius: 20px; font-weight: bold; cursor: pointer;
-        }
+        .modal-content { background: transparent; padding: 10px; max-width: 90%; max-height: 80%; text-align: center; }
+        .modal-content img { max-width: 100%; max-height: 70vh; border-radius: 10px; border: 2px solid white; }
+        .modal-btn-close { margin-top: 15px; padding: 10px 25px; background: #ff7675; color: white; border: none; border-radius: 20px; font-weight: bold; }
         .loading-text { color: white; font-weight: bold; margin-bottom: 10px; font-size: 1.2rem; }
 
         @media (max-width: 480px) {
-            .container { padding: 20px; } h2 { font-size: 1.4rem; }
-            .input-row { flex-direction: column; gap: 10px; } input { padding: 14px; }
-            .button-area { flex-direction: column; } button { width: 100%; padding: 16px; font-size: 18px; }
-            .btn-camera { order: -1; margin-bottom: 10px; }
+            .container { padding: 20px; } .input-row { flex-direction: column; gap: 10px; }
+            .button-area { flex-direction: column; } .btn-camera { order: -1; margin-bottom: 10px; }
         }
     </style>
 </head>
@@ -129,12 +86,9 @@
 <div class="modal-overlay" id="photoModal">
     <div class="loading-text" id="loadingText">📸 Đang chốt sổ... đợi xíu!</div>
     <div class="modal-content" id="modalContent" style="display: none;">
-        <div style="color: #fff; margin-bottom: 10px; font-size: 0.9rem;">
-            👇 Nhấn giữ vào ảnh để chọn <b>"Lưu vào Ảnh"</b>
-        </div>
-        <img id="capturedImage" src="" alt="Ket qua cau long">
-        <br>
-        <button class="modal-btn-close" onclick="closeModal()">Đóng lại</button>
+        <div style="color: #fff; margin-bottom: 10px; font-size: 0.9rem;">👇 Nhấn giữ ảnh để <b>Lưu</b></div>
+        <img id="capturedImage" src="">
+        <br><button class="modal-btn-close" onclick="closeModal()">Đóng lại</button>
     </div>
 </div>
 
@@ -162,8 +116,8 @@
     <div class="input-group">
         <label>Tiền Cầu (Nam phá, Nữ chịu)</label>
         <input type="number" id="tienCau" placeholder="Nhập số tiền cầu..." >
-        <div style="font-size: 0.75rem; color: #636e72; font-style: italic; margin-top: 5px;">
-            *Lí do: Nam tay to đập tốn cầu (chịu 2/3), Nữ điều cầu nhẹ nhàng (chịu 1/3)
+        <div style="font-size: 0.7rem; color: #636e72; font-style: italic; margin-top: 5px;">
+            *Logic: Tiền cầu Nam đóng gấp đôi Nữ (Hệ số 2:1)
         </div>
     </div>
 
@@ -199,88 +153,94 @@
             <span>👧 Chị em đóng nhẹ:</span>
             <span class="final-price female-price" id="giaNu">0 đ</span>
         </div>
-        <div class="note">*Số liệu thực tế không làm tròn (chuẩn từng xu)</div>
+        <div class="note">*Số liệu chuẩn từng xu (không làm tròn)</div>
     </div>
 </div>
 
 <script>
     function formatMoney(amount) {
-        return amount.toLocaleString('vi-VN', { 
-            style: 'currency', currency: 'VND',
-            minimumFractionDigits: 0, maximumFractionDigits: 2 
-        });
+        return amount.toLocaleString('vi-VN', { style: 'currency', currency: 'VND', minimumFractionDigits: 0, maximumFractionDigits: 2 });
     }
 
     function tinhTien() {
+        // 1. Lấy dữ liệu
         let san = Number(document.getElementById('tienSan').value) || 0;
         let nuoc = Number(document.getElementById('tienNuoc').value) || 0;
         let khac = Number(document.getElementById('chiPhiKhac').value) || 0;
         let cau = Number(document.getElementById('tienCau').value) || 0;
+        
         let nam = Number(document.getElementById('soNam').value) || 0;
         let nu = Number(document.getElementById('soNu').value) || 0;
         let tongNguoi = nam + nu;
 
         if (tongNguoi === 0) {
-            alert("Ủa alo? Không ai đi đánh cầu thì tính tiền cho ma à? 👻\nNhập số người đi bạn ơi!");
+            alert("Vui lòng nhập số lượng người chơi!");
             return;
         }
 
-        let phiChung = (san + nuoc + khac) / tongNguoi;
-        let cauNam = 0, cauNu = 0;
-        
-        if (nam > 0 && nu > 0) {
-            cauNam = (cau * (2/3)) / nam;
-            cauNu = (cau * (1/3)) / nu;
-        } else if (nam > 0 && nu === 0) { cauNam = cau / nam; } 
-        else if (nu > 0 && nam === 0) { cauNu = cau / nu; }
+        // --- BƯỚC 1: TÍNH CÁC CHI PHÍ CHIA ĐỀU (Sân, Nước, Khác) ---
+        let tongPhiChung = san + nuoc + khac;
+        let phiChungMoiNguoi = tongPhiChung / tongNguoi;
 
+        // --- BƯỚC 2: TÍNH TIỀN CẦU (Logic 2/3 và 1/3) ---
+        // Áp dụng quy tắc: Nam dùng 2 phần, Nữ dùng 1 phần.
+        // Tổng số phần cần chia = (Số Nam * 2) + (Số Nữ * 1)
+        
+        let phanTienCauNu = 0;
+        let phanTienCauNam = 0;
+
+        if (cau > 0) {
+            let tongHeSo = (nam * 2) + (nu * 1);
+            
+            if (tongHeSo > 0) {
+                let giaMotPhan = cau / tongHeSo; // Đây là giá tiền cầu 1 bạn Nữ phải đóng
+                
+                phanTienCauNu = giaMotPhan * 1;
+                phanTienCauNam = giaMotPhan * 2; // Nam đóng gấp đôi Nữ
+            }
+        }
+
+        // --- BƯỚC 3: CỘNG TỔNG LẠI ---
+        let chotGiaNam = phiChungMoiNguoi + phanTienCauNam;
+        let chotGiaNu = phiChungMoiNguoi + phanTienCauNu;
         let tongTien = san + nuoc + khac + cau;
         
+        // Hiển thị
         document.getElementById('hienThiTong').innerText = formatMoney(tongTien);
-        document.getElementById('giaNam').innerText = formatMoney(phiChung + cauNam);
-        document.getElementById('giaNu').innerText = formatMoney(phiChung + cauNu);
+        document.getElementById('giaNam').innerText = formatMoney(chotGiaNam);
+        document.getElementById('giaNu').innerText = formatMoney(chotGiaNu);
 
+        // Hiện kết quả
         let ketQua = document.getElementById('khuVucKetQua');
         ketQua.style.display = 'block';
         document.getElementById('btnCamera').style.display = 'block';
         ketQua.scrollIntoView({ behavior: 'smooth' });
     }
 
+    // Logic Chụp Ảnh (Giữ nguyên)
     function chupAnhManHinh() {
         let modal = document.getElementById('photoModal');
         let loading = document.getElementById('loadingText');
         let content = document.getElementById('modalContent');
         let img = document.getElementById('capturedImage');
         
-        modal.style.display = 'flex';
-        loading.style.display = 'block';
-        content.style.display = 'none';
-
+        modal.style.display = 'flex'; loading.style.display = 'block'; content.style.display = 'none';
         document.querySelector('.button-area').style.display = 'none';
-        var captureElement = document.getElementById('captureArea');
-
+        
         setTimeout(() => {
-            html2canvas(captureElement, {
-                scale: 2, 
-                backgroundColor: null, 
-                useCORS: true,
-                allowTaint: true
+            html2canvas(document.getElementById('captureArea'), {
+                scale: 2, backgroundColor: null, useCORS: true, allowTaint: true
             }).then(canvas => {
                 document.querySelector('.button-area').style.display = 'flex';
                 img.src = canvas.toDataURL("image/png");
-                loading.style.display = 'none';
-                content.style.display = 'block';
+                loading.style.display = 'none'; content.style.display = 'block';
             }).catch(err => {
-                alert("Lỗi: " + err);
-                closeModal();
+                alert("Lỗi: " + err); closeModal();
                 document.querySelector('.button-area').style.display = 'flex';
             });
         }, 100);
     }
-
-    function closeModal() {
-        document.getElementById('photoModal').style.display = 'none';
-    }
+    function closeModal() { document.getElementById('photoModal').style.display = 'none'; }
 </script>
 
 </body>
