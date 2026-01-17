@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Máy Chém Cầu Lông Vô Địch</title>
+    <title>CLB Đốt Tiền Cầu</title>
     <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
     
     <style>
-        /* Font hệ thống chuẩn chỉ */
+        /* Font hệ thống */
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
             background: url('background.jpg') no-repeat center center fixed;
@@ -25,10 +25,12 @@
         .overlay {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             background: linear-gradient(135deg, rgba(20, 0, 50, 0.8), rgba(0, 0, 0, 0.6));
-            z-index: -1;
+            z-index: 0;
         }
 
         .container {
+            position: relative;
+            z-index: 1;
             background: rgba(255, 255, 255, 0.96);
             padding: 25px;
             border-radius: 20px;
@@ -40,20 +42,13 @@
         }
 
         h2 {
-            text-align: center;
-            margin-top: 0;
-            font-weight: 800;
+            text-align: center; margin-top: 0; font-weight: 800;
             background: -webkit-linear-gradient(#e17055, #d63031);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            font-size: 1.6rem;
-            margin-bottom: 5px;
-            text-transform: uppercase;
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            font-size: 1.6rem; margin-bottom: 5px; text-transform: uppercase;
         }
 
-        .subtitle {
-            text-align: center; font-size: 0.85rem; color: #636e72; margin-bottom: 20px; font-style: italic;
-        }
+        .subtitle { text-align: center; font-size: 0.85rem; color: #636e72; margin-bottom: 20px; font-style: italic; }
 
         .section-title {
             font-size: 0.75rem; color: #b2bec3; background: #2d3436;
@@ -64,19 +59,14 @@
         .input-row { display: flex; gap: 12px; margin-bottom: 12px; }
         .input-group { flex: 1; }
 
-        label {
-            display: block; margin-bottom: 6px; font-size: 0.9rem; font-weight: 600; color: #2d3436;
-        }
+        label { display: block; margin-bottom: 6px; font-size: 0.9rem; font-weight: 600; color: #2d3436; }
 
         input {
             width: 100%; padding: 12px; border: 2px solid #dfe6e9;
             border-radius: 10px; box-sizing: border-box; font-size: 16px;
             transition: 0.3s; background: #fdfdfd; font-weight: 500;
         }
-        input:focus {
-            outline: none; border-color: #00cec9; background: #fff;
-            box-shadow: 0 4px 10px rgba(0, 206, 201, 0.15);
-        }
+        input:focus { outline: none; border-color: #00cec9; background: #fff; box-shadow: 0 4px 10px rgba(0, 206, 201, 0.15); }
 
         #tienCau { border-color: #ff7675; color: #d63031; font-weight: 700; }
         #tienCau:focus { border-color: #d63031; }
@@ -89,42 +79,45 @@
             transition: all 0.2s; text-transform: uppercase; flex: 1;
         }
 
-        .btn-calc {
-            background: linear-gradient(135deg, #0984e3, #6c5ce7); color: white;
-            box-shadow: 0 6px 15px rgba(9, 132, 227, 0.3);
-        }
-        .btn-camera {
-            background: linear-gradient(135deg, #00b894, #00cec9); color: white;
-            box-shadow: 0 6px 15px rgba(0, 184, 148, 0.3);
-            display: none; flex: 0.8;
-        }
-
+        .btn-calc { background: linear-gradient(135deg, #0984e3, #6c5ce7); color: white; box-shadow: 0 6px 15px rgba(9, 132, 227, 0.3); }
+        .btn-camera { background: linear-gradient(135deg, #00b894, #00cec9); color: white; box-shadow: 0 6px 15px rgba(0, 184, 148, 0.3); display: none; flex: 0.8; }
         button:active { transform: translateY(2px); }
 
         .result {
             margin-top: 20px; padding: 20px; background: #fff;
-            border-radius: 15px; border: 2px dashed #6c5ce7;
-            display: none;
+            border-radius: 15px; border: 2px dashed #6c5ce7; display: none;
         }
 
-        .result-item {
-            display: flex; justify-content: space-between;
-            margin-bottom: 10px; font-size: 1rem; color: #2d3436; align-items: center;
-        }
-
+        .result-item { display: flex; justify-content: space-between; margin-bottom: 10px; font-size: 1rem; color: #2d3436; align-items: center; }
         .divider { height: 1px; background: #dfe6e9; margin: 12px 0; }
         .final-price { font-size: 1.3rem; font-weight: 800; }
         .male-price { color: #0984e3; } .female-price { color: #e84393; }
         .note { font-size: 0.7rem; text-align: center; color: #b2bec3; margin-top: 8px; font-style: italic; }
 
-        /* Responsive Mobile */
+        /* --- MODAL XEM ẢNH --- */
+        .modal-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.85); z-index: 999;
+            display: none; flex-direction: column; justify-content: center; align-items: center;
+        }
+        .modal-content {
+            background: transparent; padding: 10px; max-width: 90%; max-height: 80%;
+            text-align: center;
+        }
+        .modal-content img {
+            max-width: 100%; max-height: 70vh; border-radius: 10px; border: 2px solid white;
+            box-shadow: 0 0 20px rgba(255,255,255,0.2);
+        }
+        .modal-btn-close {
+            margin-top: 15px; padding: 10px 25px; background: #ff7675; color: white;
+            border: none; border-radius: 20px; font-weight: bold; cursor: pointer;
+        }
+        .loading-text { color: white; font-weight: bold; margin-bottom: 10px; font-size: 1.2rem; }
+
         @media (max-width: 480px) {
-            .container { padding: 20px; }
-            h2 { font-size: 1.4rem; }
-            .input-row { flex-direction: column; gap: 10px; }
-            input { padding: 14px; }
-            .button-area { flex-direction: column; }
-            button { width: 100%; padding: 16px; font-size: 18px; }
+            .container { padding: 20px; } h2 { font-size: 1.4rem; }
+            .input-row { flex-direction: column; gap: 10px; } input { padding: 14px; }
+            .button-area { flex-direction: column; } button { width: 100%; padding: 16px; font-size: 18px; }
             .btn-camera { order: -1; margin-bottom: 10px; }
         }
     </style>
@@ -133,9 +126,21 @@
 
 <div class="overlay"></div>
 
+<div class="modal-overlay" id="photoModal">
+    <div class="loading-text" id="loadingText">📸 Đang chốt sổ... đợi xíu!</div>
+    <div class="modal-content" id="modalContent" style="display: none;">
+        <div style="color: #fff; margin-bottom: 10px; font-size: 0.9rem;">
+            👇 Nhấn giữ vào ảnh để chọn <b>"Lưu vào Ảnh"</b>
+        </div>
+        <img id="capturedImage" src="" alt="Ket qua cau long">
+        <br>
+        <button class="modal-btn-close" onclick="closeModal()">Đóng lại</button>
+    </div>
+</div>
+
 <div class="container" id="captureArea">
-    <h2>💸 MÁY CHÉM CẦU LÔNG</h2>
-    <div class="subtitle">Đánh thì vui, tính tiền thì trầm cảm</div>
+    <h2>💸 CLB ĐỐT TIỀN CẦU</h2>
+    <div class="subtitle">Sân kinh tế, tính tiền đừng thắc mắc</div>
     
     <div class="section-title">💀 Chi Phí Mặt Bằng (Chia Đều)</div>
     <div class="input-row">
@@ -176,7 +181,7 @@
 
     <div class="button-area">
         <button class="btn-calc" onclick="tinhTien()">⚡ Bấm Xem Ai Nghèo Hơn</button>
-        <button class="btn-camera" id="btnCamera" onclick="chupAnhManHinh()">📸 Chụp Ảnh Bảng Lương</button>
+        <button class="btn-camera" id="btnCamera" onclick="chupAnhManHinh()">📸 Số Tiền Đóng Họ</button>
     </div>
 
     <div class="result" id="khuVucKetQua">
@@ -242,17 +247,39 @@
     }
 
     function chupAnhManHinh() {
+        let modal = document.getElementById('photoModal');
+        let loading = document.getElementById('loadingText');
+        let content = document.getElementById('modalContent');
+        let img = document.getElementById('capturedImage');
+        
+        modal.style.display = 'flex';
+        loading.style.display = 'block';
+        content.style.display = 'none';
+
         document.querySelector('.button-area').style.display = 'none';
         var captureElement = document.getElementById('captureArea');
-        html2canvas(captureElement, {
-            scale: 2, backgroundColor: null, useCORS: true
-        }).then(canvas => {
-            document.querySelector('.button-area').style.display = 'flex';
-            let link = document.createElement('a');
-            link.download = 'bang-luong-cau-long.png';
-            link.href = canvas.toDataURL("image/png");
-            link.click();
-        });
+
+        setTimeout(() => {
+            html2canvas(captureElement, {
+                scale: 2, 
+                backgroundColor: null, 
+                useCORS: true,
+                allowTaint: true
+            }).then(canvas => {
+                document.querySelector('.button-area').style.display = 'flex';
+                img.src = canvas.toDataURL("image/png");
+                loading.style.display = 'none';
+                content.style.display = 'block';
+            }).catch(err => {
+                alert("Lỗi: " + err);
+                closeModal();
+                document.querySelector('.button-area').style.display = 'flex';
+            });
+        }, 100);
+    }
+
+    function closeModal() {
+        document.getElementById('photoModal').style.display = 'none';
     }
 </script>
 
