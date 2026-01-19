@@ -8,7 +8,7 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     
     <style>
-        /* CSS Cơ bản */
+        /* --- CSS CHÍNH --- */
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
             background: url('background.jpg') no-repeat center center fixed;
@@ -22,101 +22,68 @@
         }
         .container {
             position: relative; z-index: 1; background: rgba(255, 255, 255, 0.96);
-            padding: 25px; border-radius: 20px; box-shadow: 0 15px 40px rgba(0,0,0,0.6);
-            width: 100%; max-width: 450px; backdrop-filter: blur(8px); border: 2px solid rgba(255, 255, 255, 0.4);
+            padding: 20px; border-radius: 20px; box-shadow: 0 15px 40px rgba(0,0,0,0.6);
+            width: 100%; max-width: 450px; backdrop-filter: blur(5px); border: 2px solid rgba(255, 255, 255, 0.4);
         }
-        h2 {
-            text-align: center; margin-top: 0; font-weight: 800;
-            background: -webkit-linear-gradient(#e17055, #d63031);
-            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-            font-size: 1.6rem; margin-bottom: 5px; text-transform: uppercase;
-        }
-        .subtitle { text-align: center; font-size: 0.85rem; color: #636e72; margin-bottom: 20px; font-style: italic; }
-        .section-title {
-            font-size: 0.75rem; color: #b2bec3; background: #2d3436; padding: 4px 8px; border-radius: 4px;
-            display: inline-block; margin-top: 12px; margin-bottom: 8px; font-weight: 700; text-transform: uppercase;
-        }
-        .input-row { display: flex; gap: 12px; margin-bottom: 12px; }
+        h2 { margin-top: 0; font-weight: 800; color: #d63031; font-size: 1.5rem; text-transform: uppercase; text-align: center; }
+        .subtitle { text-align: center; font-size: 0.8rem; color: #636e72; margin-bottom: 15px; font-style: italic; }
+        
+        .section-title { font-size: 0.75rem; color: #b2bec3; background: #2d3436; padding: 4px 8px; border-radius: 4px; display: inline-block; margin-top: 10px; margin-bottom: 5px; font-weight: 700; text-transform: uppercase; }
+        .input-row { display: flex; gap: 10px; margin-bottom: 10px; }
         .input-group { flex: 1; }
-        label { display: block; margin-bottom: 6px; font-size: 0.9rem; font-weight: 600; color: #2d3436; }
-        input, select {
-            width: 100%; padding: 12px; border: 2px solid #dfe6e9; border-radius: 10px; box-sizing: border-box; font-size: 16px;
-            transition: 0.3s; background: #fdfdfd; font-weight: 500; appearance: none;
-        }
-        input:focus, select:focus { outline: none; border-color: #00cec9; background: #fff; box-shadow: 0 4px 10px rgba(0, 206, 201, 0.15); }
+        label { display: block; margin-bottom: 4px; font-size: 0.85rem; font-weight: 600; color: #2d3436; }
+        input, select { width: 100%; padding: 10px; border: 1px solid #dfe6e9; border-radius: 8px; font-size: 16px; background: #fdfdfd; font-weight: 500; appearance: none; box-sizing: border-box; }
+        input:focus { outline: none; border-color: #00cec9; background: #fff; }
         #tienCau { border-color: #ff7675; color: #d63031; font-weight: 700; }
         
-        /* Buttons */
+        /* Nút bấm */
         .button-area { display: flex; gap: 10px; margin-top: 20px; }
-        button {
-            padding: 14px; border: none; border-radius: 12px; font-size: 16px; font-weight: 700; cursor: pointer;
-            transition: all 0.2s; text-transform: uppercase; flex: 1;
-        }
-        .btn-calc { background: linear-gradient(135deg, #0984e3, #6c5ce7); color: white; box-shadow: 0 6px 15px rgba(9, 132, 227, 0.3); }
-        .btn-camera { background: linear-gradient(135deg, #00b894, #00cec9); color: white; display: none; flex: 0.8; }
+        button { padding: 12px; border: none; border-radius: 10px; font-size: 15px; font-weight: 700; cursor: pointer; transition: 0.2s; text-transform: uppercase; flex: 1; color: white; }
+        .btn-calc { background: linear-gradient(135deg, #0984e3, #6c5ce7); }
+        .btn-camera { background: linear-gradient(135deg, #00b894, #00cec9); display: none; }
         button:active { transform: translateY(2px); }
-        
-        /* Result */
-        .result {
-            margin-top: 20px; padding: 20px; background: #fff; border-radius: 15px; border: 2px dashed #6c5ce7; display: none;
-        }
-        .result-item { display: flex; justify-content: space-between; margin-bottom: 10px; font-size: 1rem; color: #2d3436; align-items: center; }
-        .divider { height: 1px; background: #dfe6e9; margin: 12px 0; }
-        .final-price { font-size: 1.3rem; font-weight: 800; }
-        .male-price { color: #0984e3; } .female-price { color: #e84393; }
-        .note { font-size: 0.7rem; text-align: center; color: #b2bec3; margin-top: 8px; font-style: italic; }
-        
-        /* Bank Config & New Tabs */
-        .bank-config { background: #f0fdf4; padding: 15px; border-radius: 12px; border: 1px solid #bbf7d0; margin-bottom: 15px; }
-        
-        /* SWITCH TOGGLE ĐẸP */
-        .switch-toggle {
-            display: flex; background: #e0e7ff; border-radius: 30px; padding: 4px; margin-top: 10px; margin-bottom: 15px; position: relative;
-        }
-        .switch-btn {
-            flex: 1; text-align: center; padding: 10px; border-radius: 25px; cursor: pointer; font-weight: 700; font-size: 0.85rem;
-            transition: 0.3s; color: #636e72; z-index: 1; display: flex; align-items: center; justify-content: center; gap: 5px;
-        }
-        .switch-btn.active {
-            background: white; color: #16a34a; box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-        }
-        
-        /* CUSTOM FILE UPLOAD */
-        .file-upload-wrapper {
-            position: relative; width: 100%; height: 100px;
-            border: 2px dashed #b2bec3; border-radius: 12px;
-            display: flex; flex-direction: column; justify-content: center; align-items: center;
-            background: white; cursor: pointer; transition: 0.3s;
-            color: #636e72;
-        }
-        .file-upload-wrapper:hover {
-            border-color: #16a34a; background: #f0fdf4; color: #16a34a;
-        }
-        .file-upload-wrapper i { font-size: 2rem; margin-bottom: 5px; }
-        .file-upload-wrapper input[type="file"] {
-            position: absolute; width: 100%; height: 100%; opacity: 0; cursor: pointer;
-        }
-        .upload-success-text { color: #16a34a; font-weight: bold; display: none; }
 
-        /* QR Section */
-        .qr-section { display: none; margin-top: 15px; text-align: center; }
-        .qr-container { display: flex; gap: 10px; justify-content: center; margin-top: 10px; }
-        .qr-box { flex: 1; text-align: center; background: #f1f2f6; padding: 10px; border-radius: 10px; }
-        .qr-box img { width: 100%; border-radius: 5px; mix-blend-mode: multiply; }
-        .qr-title { font-size: 0.8rem; font-weight: bold; margin-bottom: 5px; display: block; }
+        /* Kết quả */
+        .result { margin-top: 15px; padding: 15px; background: #fff; border-radius: 12px; border: 2px dashed #6c5ce7; display: none; }
+        .result-item { display: flex; justify-content: space-between; margin-bottom: 8px; font-size: 0.95rem; font-weight: 600; }
+        .divider { height: 1px; background: #dfe6e9; margin: 10px 0; }
+        
+        /* Tab & Upload */
+        .bank-config { background: #f0fdf4; padding: 10px; border-radius: 10px; border: 1px solid #bbf7d0; margin-bottom: 10px; }
+        
+        /* Toggle Switch Đẹp */
+        .switch-toggle { display: flex; background: #e0e7ff; border-radius: 20px; padding: 3px; margin: 10px 0; }
+        .switch-btn { flex: 1; text-align: center; padding: 8px; border-radius: 17px; cursor: pointer; font-size: 0.8rem; font-weight: 700; color: #636e72; transition: 0.3s; display: flex; align-items: center; justify-content: center; gap: 5px; }
+        .switch-btn.active { background: white; color: #16a34a; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        
+        .file-upload-wrapper { border: 2px dashed #b2bec3; border-radius: 10px; height: 80px; display: flex; flex-direction: column; justify-content: center; align-items: center; position: relative; color: #636e72; background: white; }
+        .file-upload-wrapper input { position: absolute; width: 100%; height: 100%; opacity: 0; cursor: pointer; }
+        .upload-success-text { color: #16a34a; font-weight: bold; display: none; margin-top: 5px; font-size: 0.8rem; }
 
-        /* Modal */
-        .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); z-index: 999; display: none; flex-direction: column; justify-content: center; align-items: center; }
-        .modal-content { background: transparent; padding: 10px; width: 90%; max-width: 400px; text-align: center; display: flex; flex-direction: column; align-items: center; }
-        .modal-content img { max-width: 100%; max-height: 70vh; border-radius: 10px; border: 2px solid white; display: none; }
-        .modal-btn-close { margin-top: 20px; padding: 12px 30px; background: #ff7675; color: white; border: none; border-radius: 25px; font-weight: bold; cursor: pointer; }
-        .loading-text { color: white; font-weight: bold; margin-bottom: 15px; font-size: 1.1rem; }
-
-        @media (max-width: 480px) {
-            .container { padding: 20px; } .input-row { flex-direction: column; gap: 10px; }
-            .button-area { flex-direction: column; } .btn-camera { order: -1; margin-bottom: 10px; }
-            .qr-container { flex-direction: column; }
+        /* --- PHẦN HÓA ĐƠN ĐỂ CHỤP (Ẩn khỏi màn hình) --- */
+        #invoice-node {
+            position: absolute; top: -9999px; left: -9999px;
+            width: 400px; background: #fff; padding: 20px;
+            font-family: 'Courier New', Courier, monospace; 
+            color: #000; border: 1px solid #000;
         }
+        .inv-header { text-align: center; border-bottom: 2px dashed #000; padding-bottom: 10px; margin-bottom: 10px; }
+        .inv-title { font-size: 1.5rem; font-weight: bold; }
+        .inv-row { display: flex; justify-content: space-between; margin-bottom: 5px; font-size: 1rem; }
+        .inv-total { border-top: 2px dashed #000; margin-top: 10px; padding-top: 10px; font-weight: bold; font-size: 1.2rem; }
+        
+        /* QR trong hóa đơn */
+        .inv-qr { display: flex; justify-content: space-between; margin-top: 15px; }
+        .inv-qr-box { text-align: center; width: 48%; }
+        /* Fix lỗi ảnh QR bị ẩn */
+        .inv-qr-box img { width: 100%; border: 1px solid #333; display: block; margin-top: 5px; } 
+        .inv-footer { text-align: center; margin-top: 15px; font-size: 0.8rem; font-style: italic; }
+
+        /* Modal hiển thị ảnh */
+        .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); z-index: 9999; display: none; flex-direction: column; justify-content: center; align-items: center; }
+        .modal-content { text-align: center; width: 90%; max-width: 400px; }
+        .modal-content img { width: 100%; border-radius: 5px; box-shadow: 0 0 15px rgba(255,255,255,0.3); border: 3px solid white; }
+        .modal-btn-close { margin-top: 15px; padding: 10px 30px; background: #d63031; color: white; border: none; border-radius: 20px; font-weight: bold; cursor: pointer; font-size: 16px; }
     </style>
 </head>
 <body>
@@ -124,57 +91,51 @@
 <div class="overlay"></div>
 
 <div class="modal-overlay" id="photoModal">
-    <div class="loading-text" id="loadingText">📸 Đang chốt sổ... đợi xíu!</div>
-    <div class="modal-content" id="modalContent">
-        <div id="tutorialText" style="color: #dfe6e9; margin-bottom: 10px; font-size: 0.9rem; display: none;">👇 Nhấn giữ ảnh để <b>Lưu làm bằng chứng</b></div>
+    <div style="color: white; font-size: 1.2rem; margin-bottom: 10px;" id="loadingText">⏳ Đang in hóa đơn...</div>
+    <div class="modal-content" id="modalContent" style="display: none;">
+        <div style="color: #fab1a0; margin-bottom: 5px; font-size: 0.9rem;">👇 Nhấn giữ ảnh để LƯU nhé!</div>
         <img id="capturedImage" src="">
         <button class="modal-btn-close" onclick="closeModal()">Đóng lại</button>
     </div>
 </div>
 
-<div class="container" id="captureArea">
+<div class="container">
     <h2>💸 CLB ĐỐT TIỀN CẦU</h2>
     <div class="subtitle">Sân kinh tế, tính tiền đừng thắc mắc</div>
-    
+
     <div class="bank-config">
         <div class="section-title" style="margin-top:0; color: #166534; background: none; padding: 0;">
             <i class="fas fa-university"></i> KHO THÓC NHẬN TIỀN
         </div>
-        
+
         <div class="switch-toggle">
-            <div class="switch-btn active" id="tabAuto" onclick="switchTab('auto')">
-                <i class="fas fa-robot"></i> Auto Tận Răng
-            </div>
-            <div class="switch-btn" id="tabManual" onclick="switchTab('manual')">
-                <i class="fas fa-image"></i> Ảnh QR (Hàng Thửa)
-            </div>
+            <div class="switch-btn active" id="tabAuto" onclick="switchTab('auto')"><i class="fas fa-magic"></i> Auto Tận Răng</div>
+            <div class="switch-btn" id="tabManual" onclick="switchTab('manual')"><i class="fas fa-image"></i> Ảnh QR (Hàng Thửa)</div>
         </div>
 
         <div id="modeAuto">
             <div class="input-row">
                 <div class="input-group">
-                    <label>Ngân hàng (Kho Bạc)</label>
+                    <label>Kho Bạc (Ngân hàng)</label>
                     <select id="bankId" onchange="saveBankInfo()">
                         <option value="">Chọn Kho...</option>
                         <option value="970436">Vietcombank</option>
                         <option value="970415">VietinBank</option>
-                        <option value="970405">Agribank</option>
-                        <option value="970418">BIDV</option>
-                        <option value="970407">Techcombank</option>
                         <option value="970422">MB Bank</option>
-                        <option value="970416">ACB</option>
-                        <option value="970432">VPBank</option>
+                        <option value="970407">Techcombank</option>
+                        <option value="970418">BIDV</option>
+                        <option value="970405">Agribank</option>
                         <option value="970423">TPBank</option>
+                        <option value="970432">VPBank</option>
+                        <option value="970416">ACB</option>
                         <option value="970403">Sacombank</option>
                         <option value="970441">VIB</option>
-                        <option value="970454">VietCapital</option>
                         <option value="963388">Timo</option>
-                        <option value="971005">ViettelMoney</option>
                         <option value="971011">Momo</option>
                     </select>
                 </div>
                 <div class="input-group">
-                    <label>Số két sắt (STK)</label>
+                    <label>Mật mã két (STK)</label>
                     <input type="text" id="accountNo" placeholder="Nhập STK..." oninput="saveBankInfo()">
                 </div>
             </div>
@@ -183,44 +144,34 @@
                 <input type="text" id="accountName" placeholder="Ví dụ: NGUYEN VAN A" oninput="saveBankInfo()">
             </div>
             <div style="font-size: 0.7rem; color: #166534; margin-top: 5px; font-style: italic;">
-                <i class="fas fa-check-circle"></i> Nhập 1 lần dùng cả đời. Tự điền số tiền, quét là ting ting!
+                <i class="fas fa-check-circle"></i> Tự động lưu, lần sau không cần nhập lại.
             </div>
         </div>
 
         <div id="modeManual" style="display: none;">
-            <label style="margin-bottom: 8px;">Upload ảnh QR của bạn:</label>
             <div class="file-upload-wrapper">
                 <input type="file" id="qrUpload" accept="image/*" onchange="previewUploadedQR(event)">
-                <i class="fas fa-cloud-upload-alt"></i>
-                <span id="uploadText">Bấm vào để chọn ảnh QR</span>
-                <span class="upload-success-text" id="uploadSuccess">
-                    <i class="fas fa-check"></i> Đã nhận hàng!
-                </span>
+                <i class="fas fa-cloud-upload-alt" style="font-size: 1.5rem;"></i>
+                <span id="uploadText">Bấm chọn ảnh QR từ máy</span>
+                <span class="upload-success-text" id="uploadSuccess"><i class="fas fa-check"></i> Đã nhận hàng!</span>
             </div>
             <div style="font-size: 0.7rem; color: #d63031; margin-top: 8px; font-style: italic;">
-                *Lưu ý: Dùng ảnh này thì anh em tự nhập số tiền nhé, web không độ được đâu.
+                *Dùng ảnh này thì anh em tự nhập số tiền nhé.
             </div>
         </div>
     </div>
 
     <div class="section-title">💀 Chi Phí Mặt Bằng (Chia Đều)</div>
     <div class="input-row">
-        <div class="input-group">
-            <label>Cống nạp chủ sân</label>
-            <input type="number" id="tienSan" placeholder="200000">
-        </div>
-        <div class="input-group">
-            <label>Nước thánh</label>
-            <input type="number" id="tienNuoc" placeholder="30000">
-        </div>
+        <div class="input-group"><label>Cống nạp chủ sân</label><input type="number" id="tienSan" placeholder="200000"></div>
+        <div class="input-group"><label>Nước thánh</label><input type="number" id="tienNuoc" placeholder="30000"></div>
     </div>
-    <div class="input-group">
-        <label>Ăn chơi nhảy múa khác</label>
-        <input type="number" id="chiPhiKhac" placeholder="Gửi xe, trà đá...">
+    <div class="input-group" style="margin-bottom: 10px;">
+        <label>Ăn chơi nhảy múa khác</label><input type="number" id="chiPhiKhac" placeholder="Gửi xe, trà đá...">
     </div>
-
+    
     <div class="section-title" style="background: #d63031; color: white;">🔥 Thiệt Hại Lông Lá</div>
-    <div class="input-group">
+    <div class="input-group" style="margin-bottom: 10px;">
         <label>Tiền Cầu (Nam phá, Nữ chịu)</label>
         <input type="number" id="tienCau" placeholder="Nhập số tiền cầu..." >
         <div style="font-size: 0.7rem; color: #636e72; font-style: italic; margin-top: 5px;">*Logic: Nam đóng gấp đôi Nữ (Cho chừa cái tội đập cầu).</div>
@@ -228,68 +179,75 @@
 
     <div class="section-title">👽 Điểm Danh</div>
     <div class="input-row">
-        <div class="input-group">
-            <label>Nam thần (♂)</label>
-            <input type="number" id="soNam" placeholder="0">
-        </div>
-        <div class="input-group">
-            <label>Nữ thần (♀)</label>
-            <input type="number" id="soNu" placeholder="0">
-        </div>
+        <div class="input-group"><label>Nam thần (♂)</label><input type="number" id="soNam" placeholder="0"></div>
+        <div class="input-group"><label>Nữ thần (♀)</label><input type="number" id="soNu" placeholder="0"></div>
     </div>
 
     <div class="button-area">
-        <button class="btn-calc" onclick="tinhTien()">⚡ Tính Tiền & Hiện QR</button>
-        <button class="btn-camera" id="btnCamera" onclick="chupAnhManHinh()">📸 Số Tiền Đóng Họ</button>
+        <button class="btn-calc" onclick="tinhTien()">⚡ Bấm Xem Ai Nghèo Hơn</button>
+        <button class="btn-camera" id="btnCamera" onclick="chupHoaDon()">📸 Số Tiền Đóng Họ</button>
     </div>
 
     <div class="result" id="khuVucKetQua">
-        <div class="result-item">
-            <span>Tổng thiệt hại:</span>
-            <span id="hienThiTong" style="font-weight: bold; color: #d63031;">0 đ</span>
-        </div>
+        <div class="result-item"><span>Tổng thiệt hại:</span><span id="hienThiTong" style="color:#d63031">0 đ</span></div>
         <div class="divider"></div>
+        <div class="result-item" style="color:#0984e3"><span>👦 Anh em móc ví:</span><span id="giaNam">0 đ</span></div>
+        <div class="result-item" style="color:#e84393"><span>👧 Chị em đóng nhẹ:</span><span id="giaNu">0 đ</span></div>
         
-        <div class="result-item">
-            <span>👦 Anh em móc ví:</span>
-            <span class="final-price male-price" id="giaNam">0 đ</span>
-        </div>
-        <div class="result-item">
-            <span>👧 Chị em đóng nhẹ:</span>
-            <span class="final-price female-price" id="giaNu">0 đ</span>
-        </div>
-
-        <div class="qr-section" id="qrSection">
-            <div class="divider"></div>
-            <div style="font-weight: bold; color: #166534; margin-bottom: 10px;">📲 QUÉT NHANH KHÔNG LÃI MẸ ĐẺ LÃI CON</div>
-            
-            <div class="qr-container" id="qrAutoContainer">
-                <div class="qr-box">
-                    <span class="qr-title male-price">QR CHO NAM THẦN</span>
-                    <img id="qrNam" src="" alt="QR Nam">
-                </div>
-                <div class="qr-box">
-                    <span class="qr-title female-price">QR CHO NỮ THẦN</span>
-                    <img id="qrNu" src="" alt="QR Nu">
-                </div>
+        <div id="screenQrArea" style="text-align: center; margin-top: 15px; display: none;">
+            <div style="font-weight: bold; font-size: 0.8rem; margin-bottom: 5px; color: #166534;">📲 QUÉT NHANH KHÔNG LÃI MẸ ĐẺ LÃI CON</div>
+            <div style="display: flex; gap: 5px; justify-content: center;">
+                <img id="screenQrNam" style="width: 45%; border: 1px solid #ccc; border-radius: 5px;">
+                <img id="screenQrNu" style="width: 45%; border: 1px solid #ccc; border-radius: 5px;">
             </div>
-
-            <div class="qr-container" id="qrManualContainer" style="display: none;">
-                <div class="qr-box">
-                    <span class="qr-title" style="color: #333;">QR CỦA CHỦ NỢ</span>
-                    <img id="qrUploadedShow" src="" alt="QR Uploaded">
-                    <div style="font-size: 0.7rem; color: #d63031; margin-top: 5px;">(Tự nhập số tiền nhé các đồng chí)</div>
-                </div>
-            </div>
-
         </div>
-
+        
         <div class="note">*Số liệu chuẩn từng xu (không làm tròn)</div>
     </div>
 </div>
 
+<div id="invoice-node">
+    <div class="inv-header">
+        <div class="inv-title">CLB ĐỐT TIỀN CẦU</div>
+        <div>--- HÓA ĐƠN THANH TOÁN ---</div>
+        <div id="invDate" style="font-size: 0.8rem;"></div>
+    </div>
+    
+    <div class="inv-row"><span>Tiền sân + Nước:</span><span id="invCommon">0</span></div>
+    <div class="inv-row"><span>Tiền cầu:</span><span id="invCau">0</span></div>
+    <div class="inv-row"><span>Quân số:</span><span id="invMember">0 Nam / 0 Nữ</span></div>
+    
+    <div class="inv-total">
+        <div class="inv-row"><span>TỔNG BILL:</span><span id="invTotal">0</span></div>
+    </div>
+
+    <div style="margin-top: 10px; border-top: 1px solid #000; padding-top: 5px;">
+        <div class="inv-row" style="font-weight: bold;">
+            <span>👦 NAM:</span><span id="invPriceNam">0</span>
+        </div>
+        <div class="inv-row" style="font-weight: bold;">
+            <span>👧 NỮ:</span><span id="invPriceNu">0</span>
+        </div>
+    </div>
+
+    <div class="inv-qr" id="invQrArea">
+        <div class="inv-qr-box">
+            <div style="font-size: 0.7rem; font-weight: bold;">NAM QUÉT ĐÂY</div>
+            <img id="invQrNam" src="" crossorigin="anonymous"> 
+        </div>
+        <div class="inv-qr-box">
+            <div style="font-size: 0.7rem; font-weight: bold;">NỮ QUÉT ĐÂY</div>
+            <img id="invQrNu" src="" crossorigin="anonymous" style="display: block;">
+        </div>
+    </div>
+
+    <div class="inv-footer">
+        "Vui lòng thanh toán đủ.<br>Thiếu 1 xu, nghỉ đánh tuần sau!"
+    </div>
+</div>
+
 <script>
-    // --- KHỞI TẠO: Load thông tin đã lưu ---
+    // Load thông tin cũ
     window.onload = function() {
         if(localStorage.getItem('bankId')) document.getElementById('bankId').value = localStorage.getItem('bankId');
         if(localStorage.getItem('accountNo')) document.getElementById('accountNo').value = localStorage.getItem('accountNo');
@@ -301,17 +259,10 @@
 
     function switchTab(mode) {
         currentMode = mode;
-        if (mode === 'auto') {
-            document.getElementById('modeAuto').style.display = 'block';
-            document.getElementById('modeManual').style.display = 'none';
-            document.getElementById('tabAuto').classList.add('active');
-            document.getElementById('tabManual').classList.remove('active');
-        } else {
-            document.getElementById('modeAuto').style.display = 'none';
-            document.getElementById('modeManual').style.display = 'block';
-            document.getElementById('tabAuto').classList.remove('active');
-            document.getElementById('tabManual').classList.add('active');
-        }
+        document.getElementById('modeAuto').style.display = mode === 'auto' ? 'block' : 'none';
+        document.getElementById('modeManual').style.display = mode === 'manual' ? 'block' : 'none';
+        document.getElementById('tabAuto').className = mode === 'auto' ? 'switch-btn active' : 'switch-btn';
+        document.getElementById('tabManual').className = mode === 'manual' ? 'switch-btn active' : 'switch-btn';
     }
 
     function saveBankInfo() {
@@ -326,7 +277,7 @@
             const reader = new FileReader();
             reader.onload = function(e) {
                 uploadedQRData = e.target.result;
-                // Hiệu ứng đã chọn
+                document.getElementById('uploadText').innerText = "Đã chọn: " + file.name;
                 document.getElementById('uploadText').style.display = 'none';
                 document.getElementById('uploadSuccess').style.display = 'inline';
             }
@@ -335,25 +286,24 @@
     }
 
     function formatMoney(amount) {
-        return amount.toLocaleString('vi-VN', { style: 'currency', currency: 'VND', minimumFractionDigits: 0, maximumFractionDigits: 2 });
+        return amount.toLocaleString('vi-VN') + ' đ';
     }
 
     function tinhTien() {
-        // Lấy dữ liệu
         let san = Number(document.getElementById('tienSan').value) || 0;
         let nuoc = Number(document.getElementById('tienNuoc').value) || 0;
         let khac = Number(document.getElementById('chiPhiKhac').value) || 0;
         let cau = Number(document.getElementById('tienCau').value) || 0;
-        
         let nam = Number(document.getElementById('soNam').value) || 0;
         let nu = Number(document.getElementById('soNu').value) || 0;
         let tongNguoi = nam + nu;
 
-        if (tongNguoi === 0) { alert("Vui lòng nhập số người!"); return; }
+        if (tongNguoi === 0) { alert("Alo? Không ai đi đánh à?"); return; }
 
         let phiChung = (san + nuoc + khac) / tongNguoi;
         let tienCauNam = 0, tienCauNu = 0;
 
+        // Logic hệ số: Nữ chịu 1, Nam chịu 2 (Tương đương Nam đóng gấp đôi)
         if (cau > 0) {
             let tongSuat = (nam * 2) + (nu * 1);
             if (tongSuat > 0) {
@@ -367,77 +317,107 @@
         let giaNu = Math.ceil(phiChung + tienCauNu);
         let tongTien = san + nuoc + khac + cau;
 
+        // HIỂN THỊ
         document.getElementById('hienThiTong').innerText = formatMoney(tongTien);
         document.getElementById('giaNam').innerText = formatMoney(giaNam);
         document.getElementById('giaNu').innerText = formatMoney(giaNu);
 
-        // --- XỬ LÝ HIỂN THỊ QR ---
-        let qrSection = document.getElementById('qrSection');
-        let qrAutoContainer = document.getElementById('qrAutoContainer');
-        let qrManualContainer = document.getElementById('qrManualContainer');
+        // --- XỬ LÝ QR HÓA ĐƠN ---
+        // 1. Điền thông tin vào hóa đơn
+        let today = new Date();
+        document.getElementById('invDate').innerText = today.toLocaleDateString('vi-VN') + " " + today.toLocaleTimeString('vi-VN');
+        document.getElementById('invCommon').innerText = formatMoney(san + nuoc + khac);
+        document.getElementById('invCau').innerText = formatMoney(cau);
+        document.getElementById('invMember').innerText = `${nam} Nam / ${nu} Nữ`;
+        document.getElementById('invTotal').innerText = formatMoney(tongTien);
+        document.getElementById('invPriceNam').innerText = formatMoney(giaNam);
+        document.getElementById('invPriceNu').innerText = formatMoney(giaNu);
 
-        if (currentMode === 'auto') {
-            let bankId = document.getElementById('bankId').value;
-            let accountNo = document.getElementById('accountNo').value;
-            let accountName = document.getElementById('accountName').value.trim();
+        // 2. Xử lý QR
+        let bankId = document.getElementById('bankId').value;
+        let accountNo = document.getElementById('accountNo').value;
+        let accountName = document.getElementById('accountName').value;
+        
+        let screenQrArea = document.getElementById('screenQrArea');
+        let invQrArea = document.getElementById('invQrArea');
+        
+        // Reset QR src
+        document.getElementById('screenQrNam').src = "";
+        document.getElementById('screenQrNu').src = "";
+        document.getElementById('invQrNam').src = "";
+        document.getElementById('invQrNu').src = "";
 
-            if (bankId && accountNo) {
-                let contentNam = encodeURIComponent("NAM DONG TIEN CAU");
-                let contentNu = encodeURIComponent("NU DONG TIEN CAU");
-                let baseUrl = `https://img.vietqr.io/image/${bankId}-${accountNo}-compact2.jpg`;
-                
-                document.getElementById('qrNam').src = `${baseUrl}?amount=${giaNam}&addInfo=${contentNam}&accountName=${encodeURIComponent(accountName)}`;
-                document.getElementById('qrNu').src = `${baseUrl}?amount=${giaNu}&addInfo=${contentNu}&accountName=${encodeURIComponent(accountName)}`;
-                
-                qrAutoContainer.style.display = 'flex';
-                qrManualContainer.style.display = 'none';
-                qrSection.style.display = 'block';
-            } else {
-                qrSection.style.display = 'none';
-            }
+        if (currentMode === 'auto' && bankId && accountNo) {
+            let baseUrl = `https://img.vietqr.io/image/${bankId}-${accountNo}-compact2.jpg`;
+            let contentNam = encodeURIComponent("NAM DONG TIEN CAU");
+            let contentNu = encodeURIComponent("NU DONG TIEN CAU");
+            
+            let urlNam = `${baseUrl}?amount=${giaNam}&addInfo=${contentNam}&accountName=${encodeURIComponent(accountName)}`;
+            let urlNu = `${baseUrl}?amount=${giaNu}&addInfo=${contentNu}&accountName=${encodeURIComponent(accountName)}`;
+            
+            // Set cho màn hình chính
+            document.getElementById('screenQrNam').src = urlNam;
+            document.getElementById('screenQrNu').src = urlNu;
+            screenQrArea.style.display = 'block';
+
+            // Set cho hóa đơn ẩn
+            document.getElementById('invQrNam').src = urlNam;
+            document.getElementById('invQrNu').src = urlNu;
+            
+            // Hiện cả 2 QR trong hóa đơn
+            document.getElementById('invQrNam').style.display = 'block';
+            document.getElementById('invQrNu').style.display = 'block';
+            invQrArea.style.display = 'flex';
+
+        } else if (currentMode === 'manual' && uploadedQRData) {
+            // Chế độ ảnh tay: Chỉ hiện 1 QR
+            document.getElementById('screenQrNam').src = uploadedQRData;
+            document.getElementById('screenQrNu').style.display = 'none'; // Ẩn bớt 1 cái
+            screenQrArea.style.display = 'block';
+
+            // Hóa đơn
+            document.getElementById('invQrNam').src = uploadedQRData;
+            document.getElementById('invQrNu').style.display = 'none'; // Ẩn bớt
+            invQrArea.style.display = 'flex';
         } else {
-            // Chế độ Upload Ảnh
-            if (uploadedQRData) {
-                document.getElementById('qrUploadedShow').src = uploadedQRData;
-                qrAutoContainer.style.display = 'none';
-                qrManualContainer.style.display = 'flex';
-                qrSection.style.display = 'block';
-            } else {
-                alert("Chưa chọn ảnh QR kìa sếp ơi!");
-                qrSection.style.display = 'none';
-            }
+            screenQrArea.style.display = 'none';
+            invQrArea.style.display = 'none';
         }
 
-        let ketQua = document.getElementById('khuVucKetQua');
-        ketQua.style.display = 'block';
+        document.getElementById('khuVucKetQua').style.display = 'block';
         document.getElementById('btnCamera').style.display = 'block';
-        ketQua.scrollIntoView({ behavior: 'smooth' });
+        document.getElementById('khuVucKetQua').scrollIntoView({ behavior: 'smooth' });
     }
 
-    // Logic Chụp Ảnh (Fix lỗi bảo mật)
-    function chupAnhManHinh() {
+    // --- CHỤP HÓA ĐƠN ---
+    function chupHoaDon() {
         let modal = document.getElementById('photoModal');
         let loading = document.getElementById('loadingText');
         let img = document.getElementById('capturedImage');
-        let tutorial = document.getElementById('tutorialText');
+        let content = document.getElementById('modalContent');
         
-        img.style.display = 'none'; tutorial.style.display = 'none';
-        loading.style.display = 'block'; modal.style.display = 'flex';
-        document.querySelector('.button-area').style.display = 'none';
-        
+        modal.style.display = 'flex';
+        loading.style.display = 'block';
+        content.style.display = 'none';
+
+        let invoiceNode = document.getElementById('invoice-node');
+
         setTimeout(() => {
-            html2canvas(document.getElementById('captureArea'), {
-                scale: 2, useCORS: true, backgroundColor: null
+            html2canvas(invoiceNode, {
+                scale: 2, 
+                useCORS: true, 
+                backgroundColor: '#ffffff' 
             }).then(canvas => {
-                document.querySelector('.button-area').style.display = 'flex';
                 img.src = canvas.toDataURL("image/png");
-                img.onload = function() { loading.style.display = 'none'; img.style.display = 'block'; tutorial.style.display = 'block'; };
+                loading.style.display = 'none';
+                content.style.display = 'block';
             }).catch(err => {
-                alert("Lỗi: " + err); closeModal();
-                document.querySelector('.button-area').style.display = 'flex';
+                alert("Lỗi chụp: " + err);
+                closeModal();
             });
-        }, 500);
+        }, 500); 
     }
+
     function closeModal() { document.getElementById('photoModal').style.display = 'none'; }
 </script>
 
