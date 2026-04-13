@@ -9,11 +9,25 @@
     <link href="https://fonts.googleapis.com/css2?family=Pangolin&family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet">
     
     <style>
+        :root {
+            --navy-900: #12324a;
+            --navy-800: #184966;
+            --navy-700: #1e607f;
+            --cyan-500: #33c7d6;
+            --cyan-400: #67d9e5;
+            --cyan-200: #d9f6f8;
+            --ice-100: #f4fbfc;
+            --slate-700: #33566b;
+            --slate-900: #243746;
+            --success-600: #1f9d8b;
+            --success-700: #147a6c;
+        }
+
         /* --- CSS THEME TẾT --- */
         body {
             font-family: 'Roboto', -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
             /* Ảnh nền Tết */
-            background: url('background2.jpg') no-repeat center center fixed; 
+            background: url('background3.jpg') no-repeat center center fixed;
             background-size: cover;
             display: flex; justify-content: center; align-items: center;
             min-height: 100vh; margin: 0; color: #333; padding: 15px; box-sizing: border-box;
@@ -27,53 +41,53 @@
         /* KHUNG CHÍNH (MÀU KEM & VIỀN ĐỎ) */
         .container {
             position: relative; z-index: 1; 
-            background: rgba(255, 255, 240, 0.96); /* Màu kem sáng */
+            background: rgba(244, 251, 252, 0.96);
             padding: 20px; 
             border-radius: 20px; 
-            box-shadow: 0 10px 30px rgba(214, 48, 49, 0.4); 
+            box-shadow: 0 12px 30px rgba(18, 50, 74, 0.35); 
             width: 100%; max-width: 450px; 
-            border: 2px solid #e17055; 
+            border: 2px solid var(--cyan-400); 
         }
         
         /* Tiêu đề - Font vui nhộn */
         h2 { 
             font-family: 'Pangolin', cursive;
             margin-top: 0; font-weight: 800; 
-            color: #d63031; /* Đỏ đậm */
+            color: var(--navy-900);
             font-size: 1.8rem; text-transform: uppercase; text-align: center;
-            text-shadow: 1px 1px 0px #f1c40f; 
+            text-shadow: 1px 1px 0px rgba(103, 217, 229, 0.7); 
             margin-bottom: 5px;
         }
         .subtitle { 
-            text-align: center; font-size: 0.9rem; color: #c0392b; 
+            text-align: center; font-size: 0.9rem; color: var(--slate-700); 
             margin-bottom: 20px; font-style: italic; font-weight: 400; 
         }
         
         /* Section Title (Đỏ viền Vàng) */
         .section-title { 
             font-size: 0.8rem; color: #fff; 
-            background: #d63031; 
+            background: linear-gradient(135deg, var(--navy-800), var(--navy-700)); 
             padding: 6px 12px; border-radius: 15px; 
             display: inline-block; margin-top: 10px; margin-bottom: 8px; 
             font-weight: 700; text-transform: uppercase;
-            border: 1px solid #f1c40f; 
-            box-shadow: 0 2px 4px rgba(0,0,0,0.15);
+            border: 1px solid var(--cyan-400); 
+            box-shadow: 0 2px 4px rgba(18, 50, 74, 0.18);
         }
 
         /* Inputs */
         .input-row { display: flex; gap: 10px; margin-bottom: 12px; }
         .input-group { flex: 1; }
-        label { display: block; margin-bottom: 5px; font-size: 0.85rem; font-weight: 600; color: #c0392b; }
+        label { display: block; margin-bottom: 5px; font-size: 0.85rem; font-weight: 600; color: var(--navy-800); }
         input, select { 
             width: 100%; padding: 10px; 
-            border: 1px solid #fab1a0; 
+            border: 1px solid #b7dde5; 
             border-radius: 8px; font-size: 16px; 
             background: #fff; font-weight: 500; 
-            color: #2d3436;
+            color: var(--slate-900);
             appearance: none; box-sizing: border-box; 
         }
-        input:focus { outline: none; border-color: #d63031; box-shadow: 0 0 5px rgba(214, 48, 49, 0.2); }
-        #tienCau { border-color: #d63031; color: #d63031; font-weight: 700; background: #fff5f5; }
+        input:focus, select:focus { outline: none; border-color: var(--cyan-500); box-shadow: 0 0 0 3px rgba(51, 199, 214, 0.18); }
+        #tienCau { border-color: var(--navy-700); color: var(--navy-800); font-weight: 700; background: #eef9fc; }
         
         /* Buttons */
         .button-area { display: flex; gap: 10px; margin-top: 25px; }
@@ -81,27 +95,27 @@
             padding: 12px; border: none; border-radius: 10px; 
             font-size: 15px; font-weight: 700; cursor: pointer; 
             transition: 0.2s; text-transform: uppercase; flex: 1; color: #fff;
-            border: 1px solid #f1c40f; 
+            border: 1px solid rgba(255, 255, 255, 0.28); 
         }
-        .btn-calc { background: linear-gradient(135deg, #e17055, #d63031); box-shadow: 0 3px 0 #b33939; }
+        .btn-calc { background: linear-gradient(135deg, var(--navy-800), var(--navy-900)); box-shadow: 0 3px 0 #0b2537; }
         .btn-calc:active { transform: translateY(3px); box-shadow: none; }
-        .btn-camera { background: linear-gradient(135deg, #00b894, #00cec9); box-shadow: 0 3px 0 #008c7a; display: none; }
+        .btn-camera { background: linear-gradient(135deg, var(--cyan-500), #1ba7c1); box-shadow: 0 3px 0 #11778d; display: none; }
         .btn-camera:active { transform: translateY(3px); box-shadow: none; }
 
         /* Kết quả */
-        .result { margin-top: 20px; padding: 15px; background: #fff; border-radius: 12px; border: 2px dashed #d63031; display: none; }
-        .result-item { display: flex; justify-content: space-between; margin-bottom: 8px; font-size: 1rem; font-weight: 400; color: #2d3436; }
+        .result { margin-top: 20px; padding: 15px; background: #fff; border-radius: 12px; border: 2px dashed var(--navy-700); display: none; }
+        .result-item { display: flex; justify-content: space-between; margin-bottom: 8px; font-size: 1rem; font-weight: 400; color: var(--slate-900); }
         .result-item span:last-child { font-weight: 700; }
-        .divider { height: 1px; background: #fab1a0; margin: 12px 0; }
+        .divider { height: 1px; background: #c7e8ee; margin: 12px 0; }
         
         /* Config Box */
-        .bank-config { background: #fff0f0; padding: 15px; border-radius: 12px; border: 1px solid #ff7675; margin-bottom: 15px; }
-        .switch-toggle { display: flex; background: #fab1a0; border-radius: 20px; padding: 3px; margin: 10px 0; }
+        .bank-config { background: var(--ice-100); padding: 15px; border-radius: 12px; border: 1px solid #bfe6ee; margin-bottom: 15px; }
+        .switch-toggle { display: flex; background: #d7eef3; border-radius: 20px; padding: 3px; margin: 10px 0; }
         .switch-btn { flex: 1; text-align: center; padding: 8px; border-radius: 17px; cursor: pointer; font-size: 0.85rem; font-weight: 600; color: #fff; transition: 0.3s; }
-        .switch-btn.active { background: #d63031; color: #fff; box-shadow: 0 2px 5px rgba(0,0,0,0.15); }
-        .file-upload-wrapper { border: 2px dashed #d63031; border-radius: 10px; height: 80px; display: flex; flex-direction: column; justify-content: center; align-items: center; position: relative; color: #d63031; background: white; cursor: pointer;}
+        .switch-btn.active { background: linear-gradient(135deg, var(--navy-800), var(--navy-700)); color: #fff; box-shadow: 0 2px 5px rgba(18, 50, 74, 0.18); }
+        .file-upload-wrapper { border: 2px dashed var(--navy-700); border-radius: 10px; height: 80px; display: flex; flex-direction: column; justify-content: center; align-items: center; position: relative; color: var(--navy-800); background: white; cursor: pointer;}
         .file-upload-wrapper input { position: absolute; width: 100%; height: 100%; opacity: 0; cursor: pointer; }
-        .upload-success-text { color: #27ae60; font-weight: 700; display: none; margin-top: 5px; font-size: 0.8rem; }
+        .upload-success-text { color: var(--success-600); font-weight: 700; display: none; margin-top: 5px; font-size: 0.8rem; }
 
         /* --- HÓA ĐƠN ẨN (FIX LỆCH) --- */
         #hidden-invoice-wrapper {
@@ -111,15 +125,15 @@
         #invoice-node {
             width: 100%; background: #fff; padding: 25px;
             font-family: 'Courier New', Courier, monospace; 
-            color: #000; border: 5px double #d63031;
+            color: #000; border: 5px double var(--navy-800);
             position: relative; box-sizing: border-box;
         }
 
         .inv-header { text-align: center; border-bottom: 2px dashed #000; padding-bottom: 10px; margin-bottom: 10px; }
-        .inv-title { font-size: 1.5rem; font-weight: 700; color: #d63031; font-family: 'Roboto', sans-serif; text-transform: uppercase; }
+        .inv-title { font-size: 1.5rem; font-weight: 700; color: var(--navy-800); font-family: 'Roboto', sans-serif; text-transform: uppercase; }
         .inv-row { display: flex; justify-content: space-between; margin-bottom: 6px; font-size: 1rem; font-weight: 400; }
         .inv-row span:last-child { font-weight: 600; }
-        .inv-total { border-top: 2px dashed #000; margin-top: 10px; padding-top: 10px; font-weight: 700; font-size: 1.2rem; color: #d63031; }
+        .inv-total { border-top: 2px dashed #000; margin-top: 10px; padding-top: 10px; font-weight: 700; font-size: 1.2rem; color: var(--navy-800); }
         
         .inv-qr { display: flex; justify-content: space-between; margin-top: 20px; gap: 20px; }
         .inv-qr-box { text-align: center; width: 48%; }
@@ -131,21 +145,21 @@
         .stamp-box {
             position: absolute; bottom: 70px; right: 30px;
             width: 90px; height: 90px; border-radius: 50%;
-            border: 3px solid #d63031;
+            border: 3px solid var(--navy-800);
             display: flex; flex-direction: column; justify-content: center; align-items: center;
-            color: #d63031; font-weight: 700; font-size: 0.8rem;
+            color: var(--navy-800); font-weight: 700; font-size: 0.8rem;
             text-transform: uppercase; text-align: center;
             transform: rotate(-20deg); opacity: 0.8; z-index: 10;
             pointer-events: none; background: rgba(255, 255, 255, 0.7); 
             font-family: 'Roboto', sans-serif; line-height: 1.2;
         }
-        .stamp-inner { border-top: 1px solid #d63031; border-bottom: 1px solid #d63031; padding: 2px 0; margin-top: 3px; font-size: 0.7rem; font-weight: 900; }
+        .stamp-inner { border-top: 1px solid var(--navy-800); border-bottom: 1px solid var(--navy-800); padding: 2px 0; margin-top: 3px; font-size: 0.7rem; font-weight: 900; }
 
         /* Modal */
         .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); z-index: 9999; display: none; flex-direction: column; justify-content: center; align-items: center; }
         .modal-content { text-align: center; width: 95%; max-width: 450px; }
         .modal-content img { width: 100%; border-radius: 5px; box-shadow: 0 0 20px rgba(255,255,255,0.2); border: 3px solid white; }
-        .modal-btn-close { margin-top: 20px; padding: 10px 30px; background: #d63031; color: white; border: none; border-radius: 20px; font-weight: 600; cursor: pointer; font-size: 16px; border: 2px solid #fff; }
+        .modal-btn-close { margin-top: 20px; padding: 10px 30px; background: linear-gradient(135deg, var(--navy-800), var(--navy-900)); color: white; border: none; border-radius: 20px; font-weight: 600; cursor: pointer; font-size: 16px; border: 2px solid #fff; }
     </style>
 </head>
 <body>
@@ -155,7 +169,7 @@
 <div class="modal-overlay" id="photoModal">
     <div style="color: white; font-size: 1.2rem; margin-bottom: 10px; font-weight: 500;" id="loadingText">🧧 Đang xuất hóa đơn...</div>
     <div class="modal-content" id="modalContent" style="display: none;">
-        <div style="color: #fab1a0; margin-bottom: 5px; font-size: 0.9rem;">👇 Nhấn giữ ảnh để LƯU nhé!</div>
+        <div style="color: var(--cyan-400); margin-bottom: 5px; font-size: 0.9rem;">👇 Nhấn giữ ảnh để LƯU nhé!</div>
         <img id="capturedImage" src="">
         <button class="modal-btn-close" onclick="closeModal()">Đóng lại</button>
     </div>
@@ -205,7 +219,7 @@
                 <label>Chủ Nợ (Tên không dấu)</label>
                 <input type="text" id="accountName" placeholder="Ví dụ: NGUYEN VAN A" oninput="saveBankInfo()">
             </div>
-            <div style="font-size: 0.75rem; color: #c0392b; margin-top: 5px; font-style: italic;">
+            <div style="font-size: 0.75rem; color: var(--slate-700); margin-top: 5px; font-style: italic;">
                 <i class="fas fa-check-circle"></i> Tự động lưu, lần sau không cần nhập lại.
             </div>
         </div>
@@ -217,7 +231,7 @@
                 <span id="uploadText">Bấm chọn ảnh QR từ máy</span>
                 <span class="upload-success-text" id="uploadSuccess"><i class="fas fa-check"></i> Đã nhận hàng!</span>
             </div>
-            <div style="font-size: 0.75rem; color: #d63031; margin-top: 8px; font-style: italic;">
+            <div style="font-size: 0.75rem; color: var(--navy-800); margin-top: 8px; font-style: italic;">
                 *Dùng ảnh này thì anh em tự nhập số tiền nhé.
             </div>
         </div>
@@ -225,24 +239,24 @@
 
     <div class="section-title">🏮 Chi Phí Mặt Bằng</div>
     <div class="input-row">
-        <div class="input-group"><label>Cống nạp chủ sân</label><input type="number" id="tienSan" placeholder="200000"></div>
-        <div class="input-group"><label>Nước thánh</label><input type="number" id="tienNuoc" placeholder="30000"></div>
+        <div class="input-group"><label>Cống nạp chủ sân</label><input type="number" id="tienSan" placeholder="Nhập tiền sân"></div>
+        <div class="input-group"><label>Nước thánh</label><input type="number" id="tienNuoc" placeholder="Nhập tiền nước"></div>
     </div>
     <div class="input-group" style="margin-bottom: 10px;">
         <label>Ăn chơi nhảy múa khác</label><input type="number" id="chiPhiKhac" placeholder="Gửi xe, trà đá...">
     </div>
     
-    <div class="section-title" style="background: #e17055;">🔥 Thiệt Hại Lông Lá</div>
+    <div class="section-title" style="background: linear-gradient(135deg, #246f92, var(--cyan-500));">🔥 Thiệt Hại Lông Lá</div>
     <div class="input-group" style="margin-bottom: 10px;">
         <label>Tiền Cầu (Nam phá, Nữ chịu)</label>
         <input type="number" id="tienCau" placeholder="Nhập số tiền cầu..." >
-        <div style="font-size: 0.75rem; color: #c0392b; font-style: italic; margin-top: 5px;">*Logic: Nam đóng gấp đôi Nữ.</div>
+        <div style="font-size: 0.75rem; color: var(--slate-700); font-style: italic; margin-top: 5px;">*Logic: Nam đóng gấp đôi Nữ.</div>
     </div>
 
-    <div class="section-title" style="background: #27ae60;">👽 Điểm Danh</div>
+    <div class="section-title" style="background: linear-gradient(135deg, var(--success-700), var(--success-600));">👽 Điểm Danh</div>
     <div class="input-row">
-        <div class="input-group"><label>Nam thần (♂)</label><input type="number" id="soNam" placeholder="0"></div>
-        <div class="input-group"><label>Nữ thần (♀)</label><input type="number" id="soNu" placeholder="0"></div>
+        <div class="input-group"><label>Nam thần (♂)</label><input type="number" id="soNam" placeholder="Nhập số lông thủ nam"></div>
+        <div class="input-group"><label>Nữ thần (♀)</label><input type="number" id="soNu" placeholder="Nhập số lông thủ nữ"></div>
     </div>
 
     <div class="button-area">
@@ -251,13 +265,13 @@
     </div>
 
     <div class="result" id="khuVucKetQua">
-        <div class="result-item"><span>Tổng thiệt hại:</span><span id="hienThiTong" style="color:#d63031; font-size: 1.2rem;">0 đ</span></div>
+        <div class="result-item"><span>Tổng thiệt hại:</span><span id="hienThiTong" style="color:var(--navy-800); font-size: 1.2rem;">0 đ</span></div>
         <div class="divider"></div>
         <div class="result-item" style="color:#0984e3"><span>👦 Anh em móc ví:</span><span id="giaNam">0 đ</span></div>
         <div class="result-item" style="color:#e84393"><span>👧 Chị em đóng nhẹ:</span><span id="giaNu">0 đ</span></div>
         
         <div id="screenQrArea" style="text-align: center; margin-top: 15px; display: none;">
-            <div style="font-weight: 700; font-size: 0.8rem; margin-bottom: 5px; color: #c0392b;">📲 QUÉT NHANH KHÔNG LÃI MẸ ĐẺ LÃI CON</div>
+            <div style="font-weight: 700; font-size: 0.8rem; margin-bottom: 5px; color: var(--navy-800);">📲 QUÉT NHANH KHÔNG LÃI MẸ ĐẺ LÃI CON</div>
             <div style="display: flex; gap: 30px; justify-content: center;">
                 <div id="boxScreenQrNam" style="width: 45%;">
                     <img id="screenQrNam" style="width: 100%; border: 4px solid #0984e3; border-radius: 8px;">
@@ -419,11 +433,8 @@
 
         if (currentMode === 'auto' && bankId && accountNo) {
             let baseUrl = `https://img.vietqr.io/image/${bankId}-${accountNo}-compact2.jpg`;
-            let contentNam = encodeURIComponent("NAM DONG TIEN CAU");
-            let contentNu = encodeURIComponent("NU DONG TIEN CAU");
-            
-            let urlNam = `${baseUrl}?amount=${giaNam}&addInfo=${contentNam}&accountName=${encodeURIComponent(accountName)}`;
-            let urlNu = `${baseUrl}?amount=${giaNu}&addInfo=${contentNu}&accountName=${encodeURIComponent(accountName)}`;
+            let urlNam = `${baseUrl}?amount=${giaNam}&accountName=${encodeURIComponent(accountName)}`;
+            let urlNu = `${baseUrl}?amount=${giaNu}&accountName=${encodeURIComponent(accountName)}`;
             
             document.getElementById('screenQrNam').src = urlNam;
             document.getElementById('screenQrNu').src = urlNu;
