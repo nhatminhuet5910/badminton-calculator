@@ -57,29 +57,75 @@
         
         /* KHUNG CHÍNH (MÀU KEM & VIỀN ĐỎ) */
         .container {
-            position: relative; z-index: 1; 
-            background: rgba(244, 251, 252, 0.96);
-            padding: 20px; 
-            border-radius: 20px; 
-            box-shadow: 0 12px 30px rgba(18, 50, 74, 0.35); 
-            width: 100%; max-width: 450px; 
-            border: 2px solid var(--cyan-400); 
+            position: relative; z-index: 1;
+            background:
+                radial-gradient(ellipse at 20% 50%, rgba(245, 230, 200, 0.4) 0%, transparent 70%),
+                radial-gradient(ellipse at 80% 30%, rgba(245, 230, 200, 0.3) 0%, transparent 60%),
+                linear-gradient(180deg, var(--cream) 0%, #FFF5DC 100%);
+            padding: 0 20px 20px 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(93, 58, 26, 0.3);
+            width: 100%; max-width: 450px;
+            border: 2px solid var(--gold);
+            overflow: hidden;
         }
         
         /* Tiêu đề - Font vui nhộn */
-        h2 { 
+        h2 {
             font-family: 'Pangolin', cursive;
-            margin-top: 0; font-weight: 800; 
-            color: var(--navy-900);
+            margin-top: 0; font-weight: 800;
+            color: var(--gold);
             font-size: 1.8rem; text-transform: uppercase; text-align: center;
-            text-shadow: 1px 1px 0px rgba(103, 217, 229, 0.7); 
+            text-shadow: 0 0 10px rgba(212, 160, 23, 0.3);
             margin-bottom: 5px;
+            background: linear-gradient(135deg, var(--primary), #6B1010);
+            padding: 15px 20px 10px;
+            margin-left: -20px; margin-right: -20px;
+            border-radius: 0;
         }
-        .subtitle { 
-            text-align: center; font-size: 0.9rem; color: var(--slate-700); 
-            margin-bottom: 20px; font-style: italic; font-weight: 400; 
+        .subtitle {
+            text-align: center; font-size: 0.9rem;
+            margin-bottom: 20px; font-style: italic; font-weight: 400;
+            background: linear-gradient(135deg, var(--primary), #6B1010);
+            color: var(--cream-dark);
+            padding: 0 20px 12px;
+            margin-left: -20px; margin-right: -20px;
+            margin-top: 0;
         }
         
+        /* Banner Mung Le */
+        .hung-vuong-banner {
+            background: linear-gradient(135deg, var(--primary), #6B0000);
+            color: var(--gold);
+            text-align: center;
+            padding: 8px 16px;
+            font-family: 'Pangolin', cursive;
+            font-size: 14px;
+            font-weight: 700;
+            border-radius: 12px 12px 0 0;
+            margin: -0px -20px 0 -20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            border-bottom: 1px solid var(--gold);
+        }
+        .banner-cloud-left, .banner-cloud-right { color: var(--gold); flex-shrink: 0; }
+        .title-dragon { color: var(--gold); vertical-align: middle; }
+
+        /* Dong Son Divider */
+        .dongson-divider {
+            margin: 0 -20px 10px;
+            opacity: 0.6;
+            line-height: 0;
+        }
+
+        /* Lotus Icon */
+        .lotus-icon {
+            text-align: center;
+            margin: -5px 0 10px;
+        }
+
         /* Section Title (Đỏ viền Vàng) */
         .section-title { 
             font-size: 0.8rem; color: #fff; 
@@ -193,8 +239,46 @@
 </div>
 
 <div class="container">
-    <h2>🧧 CLB ĐỐT TIỀN CẦU 🧧</h2>
+    <!-- Banner Mung Le -->
+    <div class="hung-vuong-banner">
+        <svg class="banner-cloud-left" width="30" height="15" viewBox="0 0 30 15"><path d="M0,15 Q5,5 10,10 Q15,0 20,8 Q25,2 30,12" fill="none" stroke="currentColor" stroke-width="1.5"/></svg>
+        <span>✿ Mừng Giỗ Tổ Hùng Vương 10/3 ✿</span>
+        <svg class="banner-cloud-right" width="30" height="15" viewBox="0 0 30 15"><path d="M0,12 Q5,2 10,8 Q15,0 20,10 Q25,5 30,15" fill="none" stroke="currentColor" stroke-width="1.5"/></svg>
+    </div>
+
+    <h2>
+        <svg class="title-dragon" width="24" height="20" viewBox="0 0 24 20"><path d="M2,18 Q4,8 8,10 Q10,4 14,8 Q16,2 20,6 Q22,4 23,2" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><circle cx="22" cy="3" r="1.5" fill="currentColor"/></svg>
+        🏛️ CLB ĐỐT TIỀN CẦU 🏛️
+        <svg class="title-dragon" width="24" height="20" viewBox="0 0 24 20" style="transform: scaleX(-1)"><path d="M2,18 Q4,8 8,10 Q10,4 14,8 Q16,2 20,6 Q22,4 23,2" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><circle cx="22" cy="3" r="1.5" fill="currentColor"/></svg>
+    </h2>
     <div class="subtitle">Sân kinh tế, tính tiền đừng thắc mắc</div>
+
+    <!-- Dong Son Divider -->
+    <div class="dongson-divider">
+        <svg width="100%" height="20" viewBox="0 0 400 20" preserveAspectRatio="none">
+            <defs>
+                <pattern id="dongson" x="0" y="0" width="40" height="20" patternUnits="userSpaceOnUse">
+                    <circle cx="20" cy="10" r="6" fill="none" stroke="var(--gold)" stroke-width="1"/>
+                    <circle cx="20" cy="10" r="3" fill="none" stroke="var(--gold)" stroke-width="0.8"/>
+                    <line x1="20" y1="0" x2="20" y2="4" stroke="var(--gold)" stroke-width="1"/>
+                    <line x1="20" y1="16" x2="20" y2="20" stroke="var(--gold)" stroke-width="1"/>
+                    <line x1="0" y1="10" x2="14" y2="10" stroke="var(--gold)" stroke-width="0.5"/>
+                    <line x1="26" y1="10" x2="40" y2="10" stroke="var(--gold)" stroke-width="0.5"/>
+                </pattern>
+            </defs>
+            <rect width="400" height="20" fill="url(#dongson)"/>
+        </svg>
+    </div>
+
+    <!-- Lotus between banner and content -->
+    <div class="lotus-icon">
+        <svg width="30" height="28" viewBox="0 0 30 28">
+            <path d="M15,4 Q13,12 9,20 Q15,17 15,17 Q15,17 21,20 Q17,12 15,4Z" fill="var(--primary)"/>
+            <path d="M8,8 Q6,14 5,20 Q10,16 12,14" fill="var(--primary-light)" opacity="0.6"/>
+            <path d="M22,8 Q24,14 25,20 Q20,16 18,14" fill="var(--primary-light)" opacity="0.6"/>
+            <circle cx="15" cy="13" r="2.5" fill="var(--gold)"/>
+        </svg>
+    </div>
 
     <div class="bank-config">
         <div class="section-title"><i class="fas fa-university"></i> KHO THÓC NHẬN TIỀN</div>
