@@ -126,6 +126,21 @@
             margin: -5px 0 10px;
         }
 
+        /* Corner Cloud Ornaments */
+        .corner-cloud { position: absolute; pointer-events: none; z-index: 0; }
+        .corner-tl { top: 0; left: 0; }
+        .corner-tr { top: 0; right: 0; }
+        .corner-bl { bottom: 0; left: 0; }
+        .corner-br { bottom: 0; right: 0; }
+
+        /* Wave Divider */
+        .wave-divider {
+            margin: 5px -20px;
+            opacity: 0.4;
+            line-height: 0;
+            text-align: center;
+        }
+
         /* Section Title (Đỏ viền Vàng) */
         .section-title {
             font-size: 0.8rem; color: var(--gold);
@@ -240,6 +255,11 @@
 </div>
 
 <div class="container">
+    <!-- Corner Cloud Ornaments -->
+    <svg class="corner-cloud corner-tl" width="40" height="40" viewBox="0 0 40 40"><path d="M0,0 Q10,8 8,15 Q15,12 20,18 Q18,8 25,5 Q15,2 10,0Z" fill="var(--gold)" opacity="0.2"/></svg>
+    <svg class="corner-cloud corner-tr" width="40" height="40" viewBox="0 0 40 40"><path d="M40,0 Q30,8 32,15 Q25,12 20,18 Q22,8 15,5 Q25,2 30,0Z" fill="var(--gold)" opacity="0.2"/></svg>
+    <svg class="corner-cloud corner-bl" width="40" height="40" viewBox="0 0 40 40"><path d="M0,40 Q10,32 8,25 Q15,28 20,22 Q18,32 25,35 Q15,38 10,40Z" fill="var(--gold)" opacity="0.2"/></svg>
+    <svg class="corner-cloud corner-br" width="40" height="40" viewBox="0 0 40 40"><path d="M40,40 Q30,32 32,25 Q25,28 20,22 Q22,32 15,35 Q25,38 30,40Z" fill="var(--gold)" opacity="0.2"/></svg>
     <!-- Banner Mung Le -->
     <div class="hung-vuong-banner">
         <svg class="banner-cloud-left" width="30" height="15" viewBox="0 0 30 15"><path d="M0,15 Q5,5 10,10 Q15,0 20,8 Q25,2 30,12" fill="none" stroke="currentColor" stroke-width="1.5"/></svg>
@@ -339,6 +359,12 @@
         </div>
     </div>
 
+    <div class="wave-divider">
+        <svg width="100%" height="10" viewBox="0 0 400 10" preserveAspectRatio="none">
+            <path d="M0,5 Q25,0 50,5 Q75,10 100,5 Q125,0 150,5 Q175,10 200,5 Q225,0 250,5 Q275,10 300,5 Q325,0 350,5 Q375,10 400,5" fill="none" stroke="var(--gold)" stroke-width="1.5"/>
+        </svg>
+    </div>
+
     <div class="section-title">🏮 Chi Phí Mặt Bằng</div>
     <div class="input-row">
         <div class="input-group"><label>Cống nạp chủ sân</label><input type="number" id="tienSan" placeholder="Nhập tiền sân"></div>
@@ -347,12 +373,24 @@
     <div class="input-group" style="margin-bottom: 10px;">
         <label>Ăn chơi nhảy múa khác</label><input type="number" id="chiPhiKhac" placeholder="Gửi xe, trà đá...">
     </div>
-    
+
+    <div class="wave-divider">
+        <svg width="100%" height="10" viewBox="0 0 400 10" preserveAspectRatio="none">
+            <path d="M0,5 Q25,0 50,5 Q75,10 100,5 Q125,0 150,5 Q175,10 200,5 Q225,0 250,5 Q275,10 300,5 Q325,0 350,5 Q375,10 400,5" fill="none" stroke="var(--gold)" stroke-width="1.5"/>
+        </svg>
+    </div>
+
     <div class="section-title">🏛️ Thiệt Hại Lông Lá</div>
     <div class="input-group" style="margin-bottom: 10px;">
         <label>Tiền Cầu (Nam phá, Nữ chịu)</label>
         <input type="number" id="tienCau" placeholder="Nhập số tiền cầu..." >
         <div style="font-size: 0.75rem; color: var(--brown); font-style: italic; margin-top: 5px;">*Logic: Nam đóng gấp đôi Nữ.</div>
+    </div>
+
+    <div class="wave-divider">
+        <svg width="100%" height="10" viewBox="0 0 400 10" preserveAspectRatio="none">
+            <path d="M0,5 Q25,0 50,5 Q75,10 100,5 Q125,0 150,5 Q175,10 200,5 Q225,0 250,5 Q275,10 300,5 Q325,0 350,5 Q375,10 400,5" fill="none" stroke="var(--gold)" stroke-width="1.5"/>
+        </svg>
     </div>
 
     <div class="section-title">👽 Điểm Danh</div>
