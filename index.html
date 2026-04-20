@@ -127,58 +127,59 @@
         }
 
         /* Section Title (Đỏ viền Vàng) */
-        .section-title { 
-            font-size: 0.8rem; color: #fff; 
-            background: linear-gradient(135deg, var(--navy-800), var(--navy-700)); 
-            padding: 6px 12px; border-radius: 15px; 
-            display: inline-block; margin-top: 10px; margin-bottom: 8px; 
+        .section-title {
+            font-size: 0.8rem; color: var(--gold);
+            background: linear-gradient(135deg, var(--primary), #6B1010);
+            padding: 6px 12px; border-radius: 15px;
+            display: inline-block; margin-top: 10px; margin-bottom: 8px;
             font-weight: 700; text-transform: uppercase;
-            border: 1px solid var(--cyan-400); 
-            box-shadow: 0 2px 4px rgba(18, 50, 74, 0.18);
+            border: 1px solid var(--gold);
+            box-shadow: 0 2px 4px rgba(93, 58, 26, 0.18);
         }
 
         /* Inputs */
         .input-row { display: flex; gap: 10px; margin-bottom: 12px; }
         .input-group { flex: 1; }
-        label { display: block; margin-bottom: 5px; font-size: 0.85rem; font-weight: 600; color: var(--navy-800); }
-        input, select { 
-            width: 100%; padding: 10px; 
-            border: 1px solid #b7dde5; 
-            border-radius: 8px; font-size: 16px; 
-            background: #fff; font-weight: 500; 
-            color: var(--slate-900);
-            appearance: none; box-sizing: border-box; 
+        label { display: block; margin-bottom: 5px; font-size: 0.85rem; font-weight: 600; color: var(--primary); }
+        input, select {
+            width: 100%; padding: 10px;
+            border: 1px solid var(--gold);
+            border-radius: 8px; font-size: 16px;
+            background: var(--cream); font-weight: 500;
+            color: var(--brown);
+            appearance: none; box-sizing: border-box;
         }
-        input:focus, select:focus { outline: none; border-color: var(--cyan-500); box-shadow: 0 0 0 3px rgba(51, 199, 214, 0.18); }
-        #tienCau { border-color: var(--navy-700); color: var(--navy-800); font-weight: 700; background: #eef9fc; }
+        input:focus, select:focus { outline: none; border-color: var(--gold-light); box-shadow: 0 0 8px rgba(212, 160, 23, 0.4); }
+        #tienCau { border-color: var(--primary); color: var(--primary); font-weight: 700; background: #FFF0E0; }
         
         /* Buttons */
         .button-area { display: flex; gap: 10px; margin-top: 25px; }
-        button { 
-            padding: 12px; border: none; border-radius: 10px; 
-            font-size: 15px; font-weight: 700; cursor: pointer; 
-            transition: 0.2s; text-transform: uppercase; flex: 1; color: #fff;
-            border: 1px solid rgba(255, 255, 255, 0.28); 
+        button {
+            padding: 12px; border: none; border-radius: 10px;
+            font-size: 15px; font-weight: 700; cursor: pointer;
+            transition: 0.2s; text-transform: uppercase; flex: 1; color: var(--gold);
+            border: 1px solid var(--gold);
         }
-        .btn-calc { background: linear-gradient(135deg, var(--navy-800), var(--navy-900)); box-shadow: 0 3px 0 #0b2537; }
+        .btn-calc { background: linear-gradient(135deg, var(--primary), #6B1010); box-shadow: 0 3px 0 #4A0000; }
+        .btn-calc:hover { box-shadow: 0 3px 12px rgba(212, 160, 23, 0.4); }
         .btn-calc:active { transform: translateY(3px); box-shadow: none; }
-        .btn-camera { background: linear-gradient(135deg, var(--cyan-500), #1ba7c1); box-shadow: 0 3px 0 #11778d; display: none; }
+        .btn-camera { background: linear-gradient(135deg, var(--gold), #B8860B); color: var(--primary); box-shadow: 0 3px 0 #8B6914; display: none; }
         .btn-camera:active { transform: translateY(3px); box-shadow: none; }
 
         /* Kết quả */
-        .result { margin-top: 20px; padding: 15px; background: #fff; border-radius: 12px; border: 2px dashed var(--navy-700); display: none; }
-        .result-item { display: flex; justify-content: space-between; margin-bottom: 8px; font-size: 1rem; font-weight: 400; color: var(--slate-900); }
+        .result { margin-top: 20px; padding: 15px; background: rgba(255, 255, 255, 0.7); border-radius: 12px; border: 2px dashed var(--gold); display: none; }
+        .result-item { display: flex; justify-content: space-between; margin-bottom: 8px; font-size: 1rem; font-weight: 400; color: var(--brown); }
         .result-item span:last-child { font-weight: 700; }
-        .divider { height: 1px; background: #c7e8ee; margin: 12px 0; }
-        
+        .divider { height: 1px; background: var(--gold); opacity: 0.3; margin: 12px 0; }
+
         /* Config Box */
-        .bank-config { background: var(--ice-100); padding: 15px; border-radius: 12px; border: 1px solid #bfe6ee; margin-bottom: 15px; }
-        .switch-toggle { display: flex; background: #d7eef3; border-radius: 20px; padding: 3px; margin: 10px 0; }
-        .switch-btn { flex: 1; text-align: center; padding: 8px; border-radius: 17px; cursor: pointer; font-size: 0.85rem; font-weight: 600; color: #fff; transition: 0.3s; }
-        .switch-btn.active { background: linear-gradient(135deg, var(--navy-800), var(--navy-700)); color: #fff; box-shadow: 0 2px 5px rgba(18, 50, 74, 0.18); }
-        .file-upload-wrapper { border: 2px dashed var(--navy-700); border-radius: 10px; height: 80px; display: flex; flex-direction: column; justify-content: center; align-items: center; position: relative; color: var(--navy-800); background: white; cursor: pointer;}
+        .bank-config { background: rgba(255, 248, 231, 0.6); padding: 15px; border-radius: 12px; border: 1px solid var(--gold); margin-bottom: 15px; }
+        .switch-toggle { display: flex; background: var(--cream-dark); border-radius: 20px; padding: 3px; margin: 10px 0; }
+        .switch-btn { flex: 1; text-align: center; padding: 8px; border-radius: 17px; cursor: pointer; font-size: 0.85rem; font-weight: 600; color: var(--brown); transition: 0.3s; }
+        .switch-btn.active { background: linear-gradient(135deg, var(--primary), #6B1010); color: var(--gold); box-shadow: 0 2px 5px rgba(93, 58, 26, 0.18); }
+        .file-upload-wrapper { border: 2px dashed var(--gold); border-radius: 10px; height: 80px; display: flex; flex-direction: column; justify-content: center; align-items: center; position: relative; color: var(--brown); background: white; cursor: pointer;}
         .file-upload-wrapper input { position: absolute; width: 100%; height: 100%; opacity: 0; cursor: pointer; }
-        .upload-success-text { color: var(--success-600); font-weight: 700; display: none; margin-top: 5px; font-size: 0.8rem; }
+        .upload-success-text { color: var(--primary); font-weight: 700; display: none; margin-top: 5px; font-size: 0.8rem; }
 
         /* --- HÓA ĐƠN ẨN (FIX LỆCH) --- */
         #hidden-invoice-wrapper {
@@ -232,7 +233,7 @@
 <div class="modal-overlay" id="photoModal">
     <div style="color: white; font-size: 1.2rem; margin-bottom: 10px; font-weight: 500;" id="loadingText">🧧 Đang xuất hóa đơn...</div>
     <div class="modal-content" id="modalContent" style="display: none;">
-        <div style="color: var(--cyan-400); margin-bottom: 5px; font-size: 0.9rem;">👇 Nhấn giữ ảnh để LƯU nhé!</div>
+        <div style="color: var(--gold); margin-bottom: 5px; font-size: 0.9rem;">👇 Nhấn giữ ảnh để LƯU nhé!</div>
         <img id="capturedImage" src="">
         <button class="modal-btn-close" onclick="closeModal()">Đóng lại</button>
     </div>
@@ -320,7 +321,7 @@
                 <label>Chủ Nợ (Tên không dấu)</label>
                 <input type="text" id="accountName" placeholder="Ví dụ: NGUYEN VAN A" oninput="saveBankInfo()">
             </div>
-            <div style="font-size: 0.75rem; color: var(--slate-700); margin-top: 5px; font-style: italic;">
+            <div style="font-size: 0.75rem; color: var(--brown); margin-top: 5px; font-style: italic;">
                 <i class="fas fa-check-circle"></i> Tự động lưu, lần sau không cần nhập lại.
             </div>
         </div>
@@ -332,7 +333,7 @@
                 <span id="uploadText">Bấm chọn ảnh QR từ máy</span>
                 <span class="upload-success-text" id="uploadSuccess"><i class="fas fa-check"></i> Đã nhận hàng!</span>
             </div>
-            <div style="font-size: 0.75rem; color: var(--navy-800); margin-top: 8px; font-style: italic;">
+            <div style="font-size: 0.75rem; color: var(--primary); margin-top: 8px; font-style: italic;">
                 *Dùng ảnh này thì anh em tự nhập số tiền nhé.
             </div>
         </div>
@@ -347,14 +348,14 @@
         <label>Ăn chơi nhảy múa khác</label><input type="number" id="chiPhiKhac" placeholder="Gửi xe, trà đá...">
     </div>
     
-    <div class="section-title" style="background: linear-gradient(135deg, #246f92, var(--cyan-500));">🔥 Thiệt Hại Lông Lá</div>
+    <div class="section-title">🏛️ Thiệt Hại Lông Lá</div>
     <div class="input-group" style="margin-bottom: 10px;">
         <label>Tiền Cầu (Nam phá, Nữ chịu)</label>
         <input type="number" id="tienCau" placeholder="Nhập số tiền cầu..." >
-        <div style="font-size: 0.75rem; color: var(--slate-700); font-style: italic; margin-top: 5px;">*Logic: Nam đóng gấp đôi Nữ.</div>
+        <div style="font-size: 0.75rem; color: var(--brown); font-style: italic; margin-top: 5px;">*Logic: Nam đóng gấp đôi Nữ.</div>
     </div>
 
-    <div class="section-title" style="background: linear-gradient(135deg, var(--success-700), var(--success-600));">👽 Điểm Danh</div>
+    <div class="section-title">👽 Điểm Danh</div>
     <div class="input-row">
         <div class="input-group"><label>Nam thần (♂)</label><input type="number" id="soNam" placeholder="Nhập số lông thủ nam"></div>
         <div class="input-group"><label>Nữ thần (♀)</label><input type="number" id="soNu" placeholder="Nhập số lông thủ nữ"></div>
@@ -366,13 +367,13 @@
     </div>
 
     <div class="result" id="khuVucKetQua">
-        <div class="result-item"><span>Tổng thiệt hại:</span><span id="hienThiTong" style="color:var(--navy-800); font-size: 1.2rem;">0 đ</span></div>
+        <div class="result-item"><span>Tổng thiệt hại:</span><span id="hienThiTong" style="color:var(--primary); font-size: 1.2rem;">0 đ</span></div>
         <div class="divider"></div>
         <div class="result-item" style="color:#0984e3"><span>👦 Anh em móc ví:</span><span id="giaNam">0 đ</span></div>
         <div class="result-item" style="color:#e84393"><span>👧 Chị em đóng nhẹ:</span><span id="giaNu">0 đ</span></div>
         
         <div id="screenQrArea" style="text-align: center; margin-top: 15px; display: none;">
-            <div style="font-weight: 700; font-size: 0.8rem; margin-bottom: 5px; color: var(--navy-800);">📲 QUÉT NHANH KHÔNG LÃI MẸ ĐẺ LÃI CON</div>
+            <div style="font-weight: 700; font-size: 0.8rem; margin-bottom: 5px; color: var(--primary);">📲 QUÉT NHANH KHÔNG LÃI MẸ ĐẺ LÃI CON</div>
             <div style="display: flex; gap: 30px; justify-content: center;">
                 <div id="boxScreenQrNam" style="width: 45%;">
                     <img id="screenQrNam" style="width: 100%; border: 4px solid #0984e3; border-radius: 8px;">
