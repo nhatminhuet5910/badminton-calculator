@@ -54,6 +54,19 @@
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             background: rgba(62, 36, 16, 0.2); z-index: 0; pointer-events: none;
         }
+
+        /* Golden Lotus Corners */
+        .golden-lotus {
+            position: fixed;
+            bottom: 0;
+            width: 280px; height: 280px;
+            background: url('golden-lotus.png') no-repeat center / contain;
+            pointer-events: none;
+            z-index: 0;
+            opacity: 0.25;
+        }
+        .golden-lotus-left { left: 0; }
+        .golden-lotus-right { right: 0; transform: scaleX(-1); }
         
         /* KHUNG CHÍNH (MÀU KEM & VIỀN ĐỎ) */
         .container {
@@ -242,31 +255,37 @@
 
         /* Falling Lotus Petals */
         @keyframes petalFall {
-            0% { transform: translateY(-20px) translateX(0) rotate(0deg); opacity: 0; }
-            10% { opacity: 0.6; }
-            50% { transform: translateY(50vh) translateX(30px) rotate(180deg); opacity: 0.4; }
-            100% { transform: translateY(105vh) translateX(-20px) rotate(360deg); opacity: 0; }
+            0% { transform: translateY(-100px) translateX(0) rotate(0deg); opacity: 0; }
+            5% { opacity: 0.7; }
+            50% { transform: translateY(50vh) translateX(40px) rotate(180deg); opacity: 0.5; }
+            100% { transform: translateY(110vh) translateX(-30px) rotate(360deg); opacity: 0; }
         }
 
         .petal {
             position: fixed;
-            width: 12px; height: 18px;
-            background: rgba(200, 100, 120, 0.3);
-            clip-path: ellipse(50% 50% at 50% 50%);
-            border-radius: 50% 50% 50% 0;
+            top: 0;
+            width: 45px; height: 45px;
+            background: url('lotus-petal.png') no-repeat center / contain;
             pointer-events: none;
             z-index: 0;
             animation: petalFall linear infinite;
             will-change: transform;
         }
-        .petal-1 { left: 5%; animation-duration: 10s; animation-delay: 0s; width: 10px; height: 16px; }
-        .petal-2 { left: 15%; animation-duration: 13s; animation-delay: 2s; width: 14px; height: 20px; }
-        .petal-3 { left: 30%; animation-duration: 11s; animation-delay: 4s; }
-        .petal-4 { left: 45%; animation-duration: 14s; animation-delay: 1s; width: 10px; height: 15px; }
-        .petal-5 { left: 60%; animation-duration: 9s; animation-delay: 3s; width: 13px; height: 19px; }
-        .petal-6 { left: 75%; animation-duration: 12s; animation-delay: 5s; }
-        .petal-7 { left: 85%; animation-duration: 15s; animation-delay: 2.5s; width: 11px; height: 17px; }
-        .petal-8 { left: 95%; animation-duration: 10s; animation-delay: 6s; width: 9px; height: 14px; }
+        .petal-1 { left: 3%; animation-duration: 8s; animation-delay: 0s; width: 40px; height: 40px; }
+        .petal-2 { left: 10%; animation-duration: 11s; animation-delay: 1.5s; width: 50px; height: 50px; }
+        .petal-3 { left: 18%; animation-duration: 9s; animation-delay: 3s; width: 38px; height: 38px; }
+        .petal-4 { left: 28%; animation-duration: 12s; animation-delay: 0.5s; width: 42px; height: 42px; }
+        .petal-5 { left: 38%; animation-duration: 7s; animation-delay: 2s; width: 48px; height: 48px; }
+        .petal-6 { left: 48%; animation-duration: 10s; animation-delay: 4s; width: 44px; height: 44px; }
+        .petal-7 { left: 58%; animation-duration: 9s; animation-delay: 1s; width: 36px; height: 36px; }
+        .petal-8 { left: 68%; animation-duration: 13s; animation-delay: 3.5s; width: 46px; height: 46px; }
+        .petal-9 { left: 78%; animation-duration: 8s; animation-delay: 2.5s; width: 40px; height: 40px; }
+        .petal-10 { left: 85%; animation-duration: 11s; animation-delay: 0.8s; width: 52px; height: 52px; }
+        .petal-11 { left: 92%; animation-duration: 10s; animation-delay: 4.5s; width: 38px; height: 38px; }
+        .petal-12 { left: 7%; animation-duration: 14s; animation-delay: 5s; width: 34px; height: 34px; }
+        .petal-13 { left: 53%; animation-duration: 8s; animation-delay: 6s; width: 42px; height: 42px; }
+        .petal-14 { left: 33%; animation-duration: 12s; animation-delay: 3s; width: 50px; height: 50px; }
+        .petal-15 { left: 73%; animation-duration: 9s; animation-delay: 1.8s; width: 36px; height: 36px; }
 
         /* Incense Smoke */
         @keyframes smokeRise {
@@ -308,12 +327,23 @@
 <div class="petal petal-6"></div>
 <div class="petal petal-7"></div>
 <div class="petal petal-8"></div>
+<div class="petal petal-9"></div>
+<div class="petal petal-10"></div>
+<div class="petal petal-11"></div>
+<div class="petal petal-12"></div>
+<div class="petal petal-13"></div>
+<div class="petal petal-14"></div>
+<div class="petal petal-15"></div>
 <!-- Incense Smoke -->
 <div class="smoke smoke-1"></div>
 <div class="smoke smoke-2"></div>
 <div class="smoke smoke-3"></div>
 
 <div class="overlay"></div>
+
+<!-- Golden Lotus Corners -->
+<div class="golden-lotus golden-lotus-left"></div>
+<div class="golden-lotus golden-lotus-right"></div>
 
 <div class="modal-overlay" id="photoModal">
     <div style="color: white; font-size: 1.2rem; margin-bottom: 10px; font-weight: 500;" id="loadingText">🏛️ Đang xuất hóa đơn...</div>
