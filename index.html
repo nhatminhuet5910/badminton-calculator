@@ -239,9 +239,79 @@
         .modal-content { text-align: center; width: 95%; max-width: 450px; }
         .modal-content img { width: 100%; border-radius: 5px; box-shadow: 0 0 20px rgba(255,255,255,0.2); border: 3px solid white; }
         .modal-btn-close { margin-top: 20px; padding: 10px 30px; background: linear-gradient(135deg, var(--navy-800), var(--navy-900)); color: white; border: none; border-radius: 20px; font-weight: 600; cursor: pointer; font-size: 16px; border: 2px solid #fff; }
+
+        /* Falling Lotus Petals */
+        @keyframes petalFall {
+            0% { transform: translateY(-20px) translateX(0) rotate(0deg); opacity: 0; }
+            10% { opacity: 0.6; }
+            50% { transform: translateY(50vh) translateX(30px) rotate(180deg); opacity: 0.4; }
+            100% { transform: translateY(105vh) translateX(-20px) rotate(360deg); opacity: 0; }
+        }
+
+        .petal {
+            position: fixed;
+            width: 12px; height: 18px;
+            background: rgba(200, 100, 120, 0.3);
+            clip-path: ellipse(50% 50% at 50% 50%);
+            border-radius: 50% 50% 50% 0;
+            pointer-events: none;
+            z-index: 0;
+            animation: petalFall linear infinite;
+            will-change: transform;
+        }
+        .petal-1 { left: 5%; animation-duration: 10s; animation-delay: 0s; width: 10px; height: 16px; }
+        .petal-2 { left: 15%; animation-duration: 13s; animation-delay: 2s; width: 14px; height: 20px; }
+        .petal-3 { left: 30%; animation-duration: 11s; animation-delay: 4s; }
+        .petal-4 { left: 45%; animation-duration: 14s; animation-delay: 1s; width: 10px; height: 15px; }
+        .petal-5 { left: 60%; animation-duration: 9s; animation-delay: 3s; width: 13px; height: 19px; }
+        .petal-6 { left: 75%; animation-duration: 12s; animation-delay: 5s; }
+        .petal-7 { left: 85%; animation-duration: 15s; animation-delay: 2.5s; width: 11px; height: 17px; }
+        .petal-8 { left: 95%; animation-duration: 10s; animation-delay: 6s; width: 9px; height: 14px; }
+
+        /* Incense Smoke */
+        @keyframes smokeRise {
+            0% { transform: translateY(0) scale(1); opacity: 0.08; }
+            50% { transform: translateY(-40vh) scale(2); opacity: 0.04; }
+            100% { transform: translateY(-80vh) scale(3.5); opacity: 0; }
+        }
+
+        .smoke {
+            position: fixed;
+            bottom: -20px;
+            width: 80px; height: 80px;
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 50%;
+            filter: blur(20px);
+            pointer-events: none;
+            z-index: 0;
+            animation: smokeRise ease-out infinite;
+            will-change: transform;
+        }
+        .smoke-1 { left: 10%; animation-duration: 15s; animation-delay: 0s; width: 60px; height: 60px; }
+        .smoke-2 { left: 50%; animation-duration: 20s; animation-delay: 5s; width: 100px; height: 100px; }
+        .smoke-3 { right: 10%; animation-duration: 18s; animation-delay: 8s; width: 70px; height: 70px; }
+
+        /* Accessibility: disable animations for reduced motion preference */
+        @media (prefers-reduced-motion: reduce) {
+            .petal, .smoke { animation: none; display: none; }
+        }
     </style>
 </head>
 <body>
+
+<!-- Falling Lotus Petals -->
+<div class="petal petal-1"></div>
+<div class="petal petal-2"></div>
+<div class="petal petal-3"></div>
+<div class="petal petal-4"></div>
+<div class="petal petal-5"></div>
+<div class="petal petal-6"></div>
+<div class="petal petal-7"></div>
+<div class="petal petal-8"></div>
+<!-- Incense Smoke -->
+<div class="smoke smoke-1"></div>
+<div class="smoke smoke-2"></div>
+<div class="smoke smoke-3"></div>
 
 <div class="overlay"></div>
 
